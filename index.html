@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tokaido Automa Deck</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#2b3a42">
+<style>
+:root{--paper:#f1ecde;--ink:#2b3a42;--sea:#3a9d99;--seal:#c4432b;--line:#cfc6ad;--card:#fffdf7}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--paper);color:var(--ink);font:17px/1.5 "Hiragino Mincho ProN","Yu Mincho",Georgia,serif;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+header{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;padding:.8rem 1rem;background:var(--ink);color:#f6f1e3}
+h1{font-size:1.2rem;margin:0;font-weight:600;letter-spacing:.02em}
+button{font:inherit;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:inherit;padding:.4rem .9rem;border-radius:6px}
+header button{border-color:#8fa2aa}
+button:focus-visible,select:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+button.go{background:var(--seal);border-color:var(--seal);color:#fff;font-size:1.15rem;padding:.7rem 2rem;box-shadow:0 3px 0 #8e2e1c}
+button.go:active{transform:translateY(2px);box-shadow:0 1px 0 #8e2e1c}
+button:disabled{opacity:.45;cursor:not-allowed}
+main{max-width:900px;margin:0 auto;padding:1rem}
+.who{display:flex;gap:.6rem;justify-content:center;margin-bottom:1rem}
+.who button{border-radius:99px;padding:.3rem 1rem;border-color:var(--line)}
+.who button[aria-pressed=true]{border-width:2.5px}
+.dot{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.4em;vertical-align:-.05em}
+.piles{display:flex;gap:4vw;justify-content:center;align-items:flex-start}
+.slot{width:min(42vw,360px);text-align:center}
+.pile{position:relative;aspect-ratio:8/5;width:100%;border:2px dashed var(--line);border-radius:10px}
+.pile img.c{position:absolute;inset:0;width:100%;height:100%;border-radius:10px;box-shadow:0 2px 6px #0003;background:var(--card)}
+.pile .stack{position:absolute;inset:0;border-radius:10px;background:#8fa2aa;box-shadow:0 2px 0 #6b7f87,0 4px 0 #8fa2aa,0 6px 0 #6b7f87}
+.cap{margin-top:.8rem;font-size:.95rem}
+.hist{display:flex;gap:6px;justify-content:center;margin-top:.5rem;min-height:2rem}
+.hist span{position:relative;width:15%}
+.hist img{width:100%;border-radius:3px;box-shadow:0 1px 3px #0004}
+.hist i{position:absolute;top:-3px;right:-3px;width:.7em;height:.7em;border-radius:50%;border:1px solid #fff}
+.acts{display:flex;flex-direction:column;align-items:center;gap:.8rem;margin:1.6rem 0}
+.hint{font-size:.9rem;opacity:.8;text-align:center;margin:0}
+.fly{position:fixed;z-index:50;transform-style:preserve-3d;pointer-events:none}
+.fly img{position:absolute;inset:0;width:100%;height:100%;border-radius:10px;backface-visibility:hidden;box-shadow:0 8px 20px #0005}
+.fly .fr{transform:rotateY(180deg)}
+dialog{border:none;border-radius:12px;padding:0;width:min(94vw,720px);max-height:90vh;background:var(--paper);color:var(--ink);box-shadow:0 10px 40px #0007}
+dialog::backdrop{background:#0008}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;background:var(--ink);color:#f6f1e3;position:sticky;top:0;z-index:2}
+.dh h2{margin:0;font-size:1.1rem}
+.db{padding:1rem 1.2rem 1.4rem}
+.db h3{color:var(--sea);margin:1.2rem 0 .3rem;font-size:1.05rem}
+.db img.ref{width:100%;border-radius:8px;border:1px solid var(--line)}
+.db ul{padding-left:1.2rem;margin:.3rem 0}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.5rem 0}
+select{font:inherit;padding:.3rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}
+.lv{border:1px solid var(--line);border-radius:8px;padding:.7rem .9rem;margin:.6rem 0;background:var(--card)}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:.5rem}
+.thumbs figure{margin:0;width:74px;text-align:center;font-size:.75rem}
+.thumbs img{width:100%;border-radius:6px;box-shadow:0 1px 4px #0004}
+.nav{display:flex;justify-content:space-between;margin-top:1.2rem}
+.mi{border-bottom:1px solid var(--line);padding:.55rem 0}.mi b{color:var(--sea)}.mi.plain{opacity:.85}#mq{width:100%;font:inherit;padding:.5rem .7rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}.steps{font-size:.85rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head>
+<body>
+<header>
+ <h1>Tokaido Automa Deck</h1>
+ <div class="row" style="margin:0">
+  <button id="bRules">Rules</button><button id="bMat">Matsuri</button><button id="bSetup">Setup</button><button id="bNew">New game</button>
+ </div>
+</header>
+<main>
+ <div class="who" id="who" role="group" aria-label="Which Automa is drawing"></div>
+ <div class="piles">
+  <div class="slot"><div class="pile" id="deck"></div><div class="cap" id="deckCap"></div></div>
+  <div class="slot"><div class="pile" id="pile"></div><div class="cap" id="pileCap"></div><div class="hist" id="hist"></div></div>
+ </div>
+ <div class="acts">
+  <button class="go" id="bDraw">Draw Automa card</button>
+  <button id="bInn">All Travelers at an Inn: reshuffle</button>
+  <p class="hint">Move the drawing Automa’s Traveler up to the range shown (1–3 empty spaces). Pick the highest-ranked space; see Rules.</p>
+ </div>
+</main>
+
+<dialog id="dRules"><div class="dh"><h2>Rules reference</h2><button id="xRules">Close</button></div><div class="db">
+<h3>Play area layout</h3><img class="ref" src="img/ref.webp" alt="Automa play area: face-down item columns, a coin column, face-up Meals and Achievements">
+<p>Items sit in face-down columns, Meals and Achievements face up.</p>
+<h3>General</h3><ul>
+<li>You play against 2 Automas using the 3-player setup. All other rules still apply.</li>
+<li>Automas never pay coins. They count as players.</li></ul>
+<h3>Collection and ranks</h3><ul>
+<li>An item of a type she has goes on top of that column. A new type starts a new column to the right.</li>
+<li>Panoramas keep coming past the 3/4/5 limit. Ignore the printed numbers.</li>
+<li>Rank of a space = number of items she has of that type (can be 0).</li>
+<li>Temple and Inn rank below all other spaces, unless the card shows that icon (ramen bowl = Inn, torii = Temple). Then that space ranks highest.</li></ul>
+<h3>Automa turn</h3><ol>
+<li>Draw a card and place it face up on the discard pile.</li>
+<li>Range: the number on the card (1–3) is the most unoccupied spaces she will move. Occupied spaces are ignored.</li>
+<li>Move to the highest-ranked space in range. On a tie, take the nearest.</li>
+<li>Resolve it:
+<ul><li>Temple: she places 2 coins from the reserve and scores 2 points.</li>
+<li>Inn: no Meal until all 3 Travelers have arrived.</li>
+<li>Anything else: she gets 1 item of that type (a Farm gives 1 coin, not 3) and scores 1 point per item of that type she now has. No normal benefit.</li></ul></li></ol>
+<h3>Your turns</h3><p>Play normally, but Meal cards stay hidden until everyone is at an Inn.</p>
+<h3>Inns</h3><ol>
+<li>At intermediate Inns, shuffle all Automa cards into a new deck (use the reshuffle button).</li>
+<li>Draw 4 Meal cards and keep the order drawn.</li>
+<li>Buy in arrival order. Each Automa takes the cheapest available (first drawn on ties), pays nothing, and scores 6 points. Duplicate Meal types are allowed.</li></ol>
+<h3>End of the journey</h3><p>Handled as normal. For the Collector achievement, each Souvenir an Automa has counts as 2.</p>
+<h3>Difficulty levels</h3><ul>
+<li>Level 1/2/3 (you): draw 5/3/1 difficulty cards and resolve each as if you stopped on that space, without moving.</li>
+<li>Level 4: default, no change.</li>
+<li>Level 5/6/7 (each Automa): she draws 1/3/5 difficulty cards, resolved as if she stopped there, without moving.</li></ul>
+<h3>Crossroads</h3><ul><li>Use 3 cards of each added type (random for Amulets, Legendary Objects, Calligraphy). Each Automa scores 5 extra points.</li><li>“Rare and precious” can’t be used. “Good luck” applies only to you.</li></ul>
+<h3>Matsuri</h3><ul><li>Remove travelers Kushinada, Misaki*, Musubi and Takeru*. (* usable but stronger in solo.)</li><li>When an Automa picks a Matsuri, put the top Matsuri card into play. Check the Automa Matsuri sheet when one triggers.</li></ul>
+<h3>Promos</h3><p>Antoine, Eriku, Naïade and New Encounters work unchanged. Felicia can’t be used.</p>
+</div></dialog>
+
+<dialog id="dMat"><div class="dh"><h2>Matsuri cards and the Automas</h2><button id="xMat">Close</button></div><div class="db"><p>Items an Automa receives from a Matsuri card are resolved as normal. When an Automa picks a Matsuri, put the top card of the Matsuri deck into play.</p><input id="mq" type="search" placeholder="Filter by name or effect" aria-label="Filter Matsuri cards"><div id="mList"></div></div></dialog>
+
+<dialog id="dSetup"><div class="dh"><h2>Game setup</h2><button id="xSetup">Close</button></div><div class="db" id="setupBody"></div></dialog>
+
+<script>
+const $=id=>document.getElementById(id),CK='tokaido_automa',N=16;
+const COL=['#3a9d99','#c4432b'],NAME=['Automa A','Automa B'];
+const SPACE=['Encounter','Rice Paddy','Shop','Farm','Sea','Hot Spring','Mountain'];
+const NEED_YOU={1:5,2:3,3:1,4:0},NEED_A={4:0,5:1,6:3,7:5};
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const fresh=()=>({v:1,done:false,step:0,turn:0,lv:[4,4,4],lvDeck:[0,1,2].map(()=>shuf([0,1,2,3,4,5,6])),lvDrawn:[[],[],[]],deck:shuf([...Array(N).keys()]),disc:[]});
+let S;
+function save(){const s=encodeURIComponent(JSON.stringify(S));document.cookie=CK+'='+s+';max-age=31536000;path=/;SameSite=Lax';try{localStorage.setItem(CK,s)}catch(e){}}
+function load(){let m=document.cookie.split('; ').find(x=>x.startsWith(CK+'='));let s=m?m.slice(CK.length+1):null;if(!s)try{s=localStorage.getItem(CK)}catch(e){}
+ try{const o=JSON.parse(decodeURIComponent(s));if(o&&o.v===1)return o}catch(e){}return fresh()}
+// index 0=You,1=Automa A,2=Automa B
+const who=['You','Automa A','Automa B'];
+function render(){
+ $('who').innerHTML=NAME.map((n,i)=>`<button data-i="${i}" aria-pressed="${S.turn===i}" style="border-color:${S.turn===i?COL[i]:''}"><span class="dot" style="background:${COL[i]}"></span>${n}</button>`).join('');
+ $('deck').innerHTML=S.deck.length?`<div class="stack"></div><img class="c" src="img/aback.webp" alt="Automa deck">`:'';
+ $('deckCap').textContent=S.deck.length?`Deck: ${S.deck.length} card${S.deck.length>1?'s':''}`:'Deck empty';
+ const top=S.disc[S.disc.length-1];
+ $('pile').innerHTML=top?`<img class="c" src="img/a${String(top.c).padStart(2,'0')}.webp" alt="Last drawn Automa card">`:'';
+ $('pileCap').textContent=top?`Drawn: ${S.disc.length} · ${NAME[top.w]}`:'No cards drawn yet';
+ $('hist').innerHTML=S.disc.slice(-5,-1).reverse().map(d=>`<span><img src="img/a${String(d.c).padStart(2,'0')}.webp" alt=""><i style="background:${COL[d.w]}"></i></span>`).join('');
+ $('bDraw').disabled=!S.deck.length||busy;
+}
+let busy=false;
+function draw(){
+ if(!S.deck.length||busy)return;
+ const c=S.deck[0],w=S.turn,dr=$('deck').getBoundingClientRect(),pr=$('pile').getBoundingClientRect();
+ const finish=()=>{S.deck.shift();S.disc.push({c,w});save();render();busy=false;fly&&fly.remove()};
+ let fly;busy=true;$('bDraw').disabled=true;
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return}
+ fly=document.createElement('div');fly.className='fly';
+ Object.assign(fly.style,{left:dr.left+'px',top:dr.top+'px',width:dr.width+'px',height:dr.height+'px'});
+ fly.innerHTML=`<img src="img/aback.webp" alt=""><img class="fr" src="img/a${String(c).padStart(2,'0')}.webp" alt="">`;
+ document.body.appendChild(fly);
+ const dx=pr.left-dr.left,dy=pr.top-dr.top,P='perspective(1200px) ';
+ fly.animate([{transform:P+'translate(0,0) rotateY(0deg) scale(1)'},{transform:P+`translate(${dx*.5}px,${dy*.5-30}px) rotateY(90deg) scale(1.08)`,offset:.5},{transform:P+`translate(${dx}px,${dy}px) rotateY(180deg) scale(1)`}],{duration:800,easing:'ease-in-out',fill:'forwards'}).onfinish=finish;
+}
+function reshuffle(){if(S.disc.length&&!confirm('Shuffle all 16 Automa cards into a new deck?'))return;S.deck=shuf([...Array(N).keys()]);S.disc=[];save();render()}
+$('who').onclick=e=>{const b=e.target.closest('button');if(b){S.turn=+b.dataset.i;save();render()}};
+$('bDraw').onclick=draw;$('bInn').onclick=reshuffle;
+$('bRules').onclick=()=>$('dRules').showModal();$('xRules').onclick=()=>$('dRules').close();
+$('bSetup').onclick=openSetup;$('xSetup').onclick=()=>{$('dSetup').close()};
+$('bNew').onclick=()=>{if(confirm('Start a new game? The saved game will be erased.')){S=fresh();save();render();openSetup()}};
+// matsuri
+const MAT=[["Cho-yo","Each Automa scores 2 points and the 2 extra Meal cards are drawn."],
+["Gion matsuri","If an Automa stops at an Encounter space, she scores 1 point in addition to receiving a card."],
+["Hadaka matsuri","When an Automa stops at a Hot Spring, she receives 1 Encounter card in addition to the Hot Spring card."],
+["Hina matsuri","Each Automa scores 2 points but doesn’t get a token."],
+["o-Bon","Place 1 coin from the reserve in each Automa’s Temple area. Each scores 1 point."],
+["o-Fune matsuri","Each Automa receives 1 Sea Panorama card and scores for it."],
+["o-Hanami","If an Automa stops at a Panorama space, she scores 2 points and receives a Panorama card."],
+["o-Shogatsu","Each Automa scores 4 points instead of rolling the die."],
+["o-Taue matsuri","If an Automa stops at a Rice Paddy space, place 1 coin from the reserve in her Temple area (she scores 1 point). She also receives a Rice Paddy Panorama card."],
+["o-Tsukimi","Each Automa scores 6 points, but the Calligraphy card doesn’t apply to them. If an Automa arrived first at this Inn, the topmost Calligraphy card is drawn."],
+["Tango","Each Automa scores 2 points but doesn’t receive a token."],
+["Tori no Ichi","Each Automa scores 3 points but doesn’t receive an Amulet."],
+["Yama no Ko","If an Automa stops on a Mountain space, she receives 2 Mountain Panorama cards. Resolve them one at a time."]];
+const MPLAIN=["Hanabi","Kamiarisai","Mura matsuri","Setsubun","Shishimai","Tanabata","Tôka Ebisu"];
+function mat(q=''){q=q.toLowerCase();const m=x=>x.toLowerCase().includes(q);
+ $('mList').innerHTML=MAT.filter(x=>m(x[0])||m(x[1])).map(x=>`<div class="mi"><b>${x[0]}</b><br>${x[1]}</div>`).join('')+
+ MPLAIN.filter(m).map(x=>`<div class="mi plain"><b>${x}</b><br>Works without modification.</div>`).join('')||'<p>No Matsuri card matches.</p>'}
+$('bMat').onclick=()=>{$('mq').value='';mat();$('dMat').showModal()};$('xMat').onclick=()=>$('dMat').close();$('mq').oninput=e=>mat(e.target.value);
+// setup wizard
+const STEPS=[
+ ['Base setup',()=>`<p>Set up the board as for a <b>3-player game</b> using the game’s rulebook. Then set up each Automa in the next step.</p>`],
+ ['Each Automa',()=>`<p>Do this for <b>Automa A</b> and <b>Automa B</b>:</p><ul><li>Choose a color. Take the Traveler piece and colored marker as usual.</li><li>Leave room for coins and cards, as in the Rules diagram.</li><li>Place her color token and <b>1 coin</b> in her play area. She scores <b>1 point</b> for it.</li><li>She gets no Traveler tile.</li></ul><img class="ref" src="img/ref.webp" alt="Automa play area layout">`],
+ ['Crossroads',()=>`<p>Only if you play with the Crossroads expansion:</p><ul><li>Choose your Traveler.</li><li>Use only <b>3 cards</b> of each added type. Pick Amulets, Legendary Objects and Calligraphy at random. You may look at them.</li><li>Each Automa scores an extra <b>5 points</b>.</li></ul><p>Skip this step for the base game.</p>`],
+ ['Difficulty',()=>{const lv=(i,o,need)=>`<div class="lv"><div class="row"><b>${who[i]}</b><label>Level <select data-lv="${i}">${o.map(x=>`<option ${S.lv[i]===x?'selected':''} value="${x}">${x===4?'4 (default)':x}</option>`).join('')}</select></label>
+ <span>${need[S.lv[i]]?`draw ${need[S.lv[i]]} difficulty card${need[S.lv[i]]>1?'s':''}`:'no cards to draw'}</span></div>${need[S.lv[i]]?`<div class="row"><button data-dl="${i}" ${S.lvDrawn[i].length>=need[S.lv[i]]?'disabled':''}>Draw difficulty card</button></div>`:''}
+ <div class="thumbs">${S.lvDrawn[i].slice(0,need[S.lv[i]]).map(k=>`<figure><img src="img/l${k}.webp" alt="${SPACE[k]}">${SPACE[k]}</figure>`).join('')}</div></div>`;
+ return `<p>Set a level for you and for each Automa. Resolve each drawn card as if the player had stopped on that space, <b>without moving the Traveler</b>. Automas gain 1 item and score per item they now have of that type.</p>`+lv(0,[4,1,2,3],NEED_YOU)+lv(1,[4,5,6,7],NEED_A)+lv(2,[4,5,6,7],NEED_A)}],
+ ['Start',()=>`<p>Shuffle the 16 Automa cards into a face-down deck. The app has already done this. Take turns in the normal order. On an Automa’s turn, pick her color above and draw.</p>`]];
+function openSetup(){renderSetup();if(!$('dSetup').open)$('dSetup').showModal()}
+function renderSetup(){const i=S.step,l=STEPS.length;
+ $('setupBody').innerHTML=`<div class="steps">Step ${i+1} of ${l}</div><h3 style="margin-top:.2rem">${STEPS[i][0]}</h3>${STEPS[i][1]()}<div class="nav"><button id="sBack" ${i?'':'disabled'}>Back</button><button id="sNext" class="${i===l-1?'go':''}">${i===l-1?'Start playing':'Next'}</button></div>`;
+ $('sBack').onclick=()=>{S.step--;save();renderSetup()};
+ $('sNext').onclick=()=>{if(i===l-1){S.done=true;S.step=0;save();$('dSetup').close()}else{S.step++;save();renderSetup()}};
+ document.querySelectorAll('[data-lv]').forEach(s=>s.onchange=()=>{const k=+s.dataset.lv;S.lv[k]=+s.value;S.lvDrawn[k]=[];S.lvDeck[k]=shuf([0,1,2,3,4,5,6]);save();renderSetup()});
+ document.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>{const k=+b.dataset.dl;S.lvDrawn[k].push(S.lvDeck[k][S.lvDrawn[k].length]);save();renderSetup()});
+}
+S=load();render();if(!S.done)openSetup();
+if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
