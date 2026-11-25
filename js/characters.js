@@ -1,0 +1,4 @@
+function dif(k){const t=DIFF[k];return t?`${L('difficulty','ความยาก')} <span class="dif ${t}">${L(DIFFN[t][0],DIFFN[t][1])}</span>`:''}
+function chars(){const q=$('cq').value.toLowerCase(),st=$('cs').value;
+ $('cList').innerHTML=CH.map((c,i)=>[c,i+1,L(c[4],CHT[i])]).filter(([c,r,ab])=>(!st||c[1]===st)&&(c[0].toLowerCase().includes(q)||ab.toLowerCase().includes(q))).map(([c,r,ab])=>{const k=c[0].split(' ')[0].toLowerCase();return `<div class="tile cs"><img src="img/c-${k}.webp" alt="${c[0]}" loading="lazy" width="360" height="485"><div class="tx"><h4>${c[0]}</h4><small><span class="tag">${c[1]}</span>${L(c[2]+' coin'+(c[2]===1?'':'s'),c[2]+' เหรียญ')} · ${L('power','พลัง')} ${c[3]} · ${dif(k)}</small>${ab}</div></div>`}).join('')||`<p>${L('No character matches.','ไม่พบตัวละครที่ตรงกัน')}</p>`}
+$('cq').oninput=chars;$('cs').onchange=chars;

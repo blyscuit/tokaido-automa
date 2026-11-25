@@ -1,0 +1,10 @@
+// Amulets, calligraphy and legendary objects
+const AMU=[["Devotion","The next time you’d spend coins on a single purchase, donate those coins to the Temple instead."],["Friendship","Treat any single-stop space as a double space."],["Health","Use both options at the next stop."],["Vitality","If in the lead position, take another turn."],["Fortune","Roll the fortune die and gain coins for the number shown."],["Hospitality","Take a meal for free at an Inn."]];
+const CAL=[["Contemplation","1 point per cherry blossom, 3 points per completed panorama."],["Fasting","3 points for each uneaten meal."],["Foresight","2 points for each coin at the end of the journey."],["Nostalgia","1 point per souvenir, 2 points per legendary item."],["Patience","6 points for last into the final Inn, 4 for second to last, 2 for all other positions."],["Perfection","2 points per accomplishment, 1 point per calligraphy card."]];
+const IMGA={Health:'health',Fortune:'fortune',Vitality:'vitality'},IMGC={Contemplation:'contemplation',Foresight:'foresight',Fasting:'fasting'};
+const LEG=[["Ema",2,"Counts as a new type of Souvenir (score it now).","นับเป็นของที่ระลึกประเภทใหม่ (ได้แต้มทันที)"],
+["Buppatsu",2,"Counts as a new type of Souvenir (score it now).","นับเป็นของที่ระลึกประเภทใหม่ (ได้แต้มทันที)"],
+["Emaki",1,"When acquired, score 1 point for each other Souvenir and/or Legendary Object in your collection. From now on, whenever you gain a Souvenir or Legendary Object, score 1 point.","เมื่อได้มา ได้ 1 แต้มต่อของที่ระลึกและ/หรือของวิเศษใบอื่นแต่ละใบในคอลเลกชัน จากนี้ไปทุกครั้งที่ได้ของที่ระลึกหรือของวิเศษ ได้ 1 แต้ม"],
+["Shodo",1,"When acquired, score 1 point for each other Souvenir and/or Legendary Object in your collection. From now on, whenever you gain a Souvenir or Legendary Object, score 1 point.","เมื่อได้มา ได้ 1 แต้มต่อของที่ระลึกและ/หรือของวิเศษใบอื่นแต่ละใบในคอลเลกชัน จากนี้ไปทุกครั้งที่ได้ของที่ระลึกหรือของวิเศษ ได้ 1 แต้ม"],
+["Murasame",3,"Sword: scores 8 points.","ดาบ: ได้ 8 แต้ม"],
+["Masamune",3,"Sword: scores 8 points.","ดาบ: ได้ 8 แต้ม"]];
