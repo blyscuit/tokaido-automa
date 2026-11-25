@@ -54,30 +54,69 @@ select{font:inherit;padding:.3rem;border:1.5px solid var(--ink);border-radius:6p
 .thumbs figure{margin:0;width:74px;text-align:center;font-size:.75rem}
 .thumbs img{width:100%;border-radius:6px;box-shadow:0 1px 4px #0004}
 .nav{display:flex;justify-content:space-between;margin-top:1.2rem}
-.mi{border-bottom:1px solid var(--line);padding:.55rem 0}.mi b{color:var(--sea)}.mi.plain{opacity:.85}#mq{width:100%;font:inherit;padding:.5rem .7rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}.steps{font-size:.85rem;opacity:.7}
+.mi{border-bottom:1px solid var(--line);padding:.55rem 0}.mi b{color:var(--sea)}.mi.plain{opacity:.85}#mq{width:100%;font:inherit;padding:.5rem .7rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}.refbar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:.6rem;background:#e4dcc6;border-bottom:1px solid var(--line)}.refbar button{border-color:var(--sea);color:#1f6f6b;background:var(--card)}
+.tabs{display:flex;gap:.5rem;margin:.6rem 0}.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
+.mi{display:flex;gap:.8rem;align-items:flex-start}.mi img{width:64px;border-radius:6px;box-shadow:0 1px 4px #0004;flex:none}
+.ch{display:flex;gap:.8rem;border-bottom:1px solid var(--line);padding:.6rem 0}.ch .pt{width:72px;height:72px;border-radius:50%;flex:none;object-fit:cover;background:#ddd5bd;display:grid;place-items:center;font-size:1.8rem;color:#8a8168}
+.ch h4{margin:0;font-size:1rem}.ch small{display:block;opacity:.8}.tag{display:inline-block;border:1px solid var(--sea);color:#1f6f6b;border-radius:99px;padding:0 .5rem;font-size:.8rem;margin-right:.3rem}
+.fl{display:flex;gap:.5rem;margin:.4rem 0}.fl input{flex:1}
+dialog.wide{width:min(96vw,1100px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin-top:.6rem}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px #0002}.tile.mt{background:none;border:0;box-shadow:none;overflow:visible}.tile.mt .tx{background:var(--card);border-radius:10px;margin-top:.4rem;border:1px solid var(--line)}
+.tile img{display:block;width:100%;height:auto}.tile .pt{aspect-ratio:1;width:100%;display:grid;place-items:center;font-size:3rem;background:#ddd5bd;color:#8a8168}
+.tile .tx{padding:.6rem .8rem .8rem;font-size:.95rem;line-height:1.4}.tile h4{margin:0 0 .2rem;font-size:1.05rem}.tile small{display:block;margin-bottom:.3rem;opacity:.85}
+.grid.mg{grid-template-columns:repeat(2,1fr);gap:.7rem}
+@media(min-width:640px){.grid.mg{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.grid.mg{grid-template-columns:repeat(6,1fr)}}
+.mg .tx{font-size:.8rem;padding:.4rem .5rem;line-height:1.35}.mg h4{font-size:.9rem}
+.grid.sk{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.skill{display:flex;gap:.8rem;align-items:flex-start;padding:.6rem;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.skill img{width:150px;flex:none;filter:drop-shadow(0 1px 3px #0004)}.skill b{color:var(--sea)}
+.db img.aid{display:block;width:100%;max-width:1000px;margin:0 auto;height:auto;filter:drop-shadow(0 2px 5px #0003)}
+.dtop{position:sticky;top:0;z-index:3;background:var(--paper)}.dtop .dh{position:static}
+.rtabs{display:flex;gap:.35rem;padding:.5rem .8rem;overflow-x:auto;border-bottom:1px solid var(--line);background:#e4dcc6;scrollbar-width:none}.rtabs::-webkit-scrollbar{display:none}
+.rtabs button{flex:none;white-space:nowrap;border-color:var(--sea);color:#1f6f6b;background:var(--card)}.rtabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+[role=tabpanel][hidden]{display:none}
+.tile.mt img.m{aspect-ratio:41/61;object-fit:fill;filter:drop-shadow(0 2px 3px #0003)}
+.dh button{border-color:#8fa2aa}.tile.cs .tx{padding:.6rem .8rem .8rem}
+.dif{font-weight:600}.dif.e{color:#2e7d32}.dif.m{color:#b26a00}.dif.h{color:#b3261e}
+.drawrow{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.steps{font-size:.85rem;opacity:.7}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style></head>
 <body>
 <header>
- <h1>Tokaido Automa Deck</h1>
+ <h1 data-th="โทไกโด · สำรับออโตมา">Tokaido Automa Deck</h1>
  <div class="row" style="margin:0">
-  <button id="bRules">Rules</button><button id="bMat">Matsuri</button><button id="bSetup">Setup</button><button id="bNew">New game</button>
+  <button id="bUndo" data-th="ย้อนกลับ">Undo</button><button id="bLang" aria-label="Language">🌐 ไทย</button><button id="bRules" data-th="กฎ">Rules</button><button id="bSetup" data-th="ตั้งค่าเกม">Setup</button><button id="bNew" data-th="เกมใหม่">New game</button>
  </div>
 </header>
+<nav class="refbar" aria-label="Reference"><button id="bChar" data-th="ตัวละคร">Characters</button><button id="bMat" data-th="มัตสึริ">Matsuri</button><button id="bAmu" data-th="เครื่องราง">Amulets</button><button id="bCal" data-th="อักษรศิลป์">Calligraphy</button><button id="bLeg" data-th="ของวิเศษ">Legendary</button><button id="bAid" data-th="ตารางอ้างอิงผู้เล่น">Player aid</button></nav>
 <main>
- <div class="who" id="who" role="group" aria-label="Which Automa is drawing"></div>
  <div class="piles">
   <div class="slot"><div class="pile" id="deck"></div><div class="cap" id="deckCap"></div></div>
   <div class="slot"><div class="pile" id="pile"></div><div class="cap" id="pileCap"></div><div class="hist" id="hist"></div></div>
  </div>
  <div class="acts">
-  <button class="go" id="bDraw">Draw Automa card</button>
-  <button id="bInn">All Travelers at an Inn: reshuffle</button>
-  <p class="hint">Move the drawing Automa’s Traveler up to the range shown (1–3 empty spaces). Pick the highest-ranked space; see Rules.</p>
+  <div class="drawrow" id="drawRow"></div>
+  <button id="bInn" data-th="ทุกคนถึงโรงเตี๊ยมแล้ว: สับสำรับใหม่">All Travelers at an Inn: reshuffle</button>
+  <p class="hint" data-th="ขยับนักเดินทางของออโตมาที่จั่วไปตามระยะบนการ์ด (ว่าง 1–3 ช่อง) เลือกช่องที่มีอันดับสูงสุด ดูรายละเอียดในกฎ">Move the drawing Automa’s Traveler up to the range shown (1–3 empty spaces). Pick the highest-ranked space; see Rules.</p>
  </div>
 </main>
 
-<dialog id="dRules"><div class="dh"><h2>Rules reference</h2><button id="xRules">Close</button></div><div class="db">
+<dialog id="dRules"><div class="dh"><h2 data-th="ข้อมูลอ้างอิงกฎ">Rules reference</h2><button id="xRules" data-th="ปิด">Close</button></div><div class="db" data-th="&lt;h3&gt;ผังพื้นที่เล่น&lt;/h3&gt;&lt;img class=&quot;ref&quot; src=&quot;img/ref.webp&quot; alt=&quot;ผังพื้นที่เล่นของออโตมา&quot;&gt;
+&lt;p&gt;ไอเท็มวางเป็นคอลัมน์คว่ำหน้า ส่วนการ์ดอาหารและรางวัลความสำเร็จวางหงายหน้า&lt;/p&gt;
+&lt;h3&gt;ทั่วไป&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;คุณเล่นกับออโตมา 2 ตัว โดยตั้งเกมแบบ 3 ผู้เล่น กติกาอื่นยังใช้ตามปกติ&lt;/li&gt;&lt;li&gt;ออโตมาไม่เคยจ่ายเหรียญ และนับเป็นผู้เล่นคนหนึ่ง&lt;/li&gt;&lt;/ul&gt;
+&lt;h3&gt;คอลเลกชันและอันดับ&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;ไอเท็มประเภทที่เธอมีแล้ววางบนสุดของคอลัมน์นั้น ประเภทใหม่เริ่มคอลัมน์ใหม่ทางขวา&lt;/li&gt;&lt;li&gt;เธอยังได้การ์ดทิวทัศน์ต่อไปแม้เกินขีดจำกัด 3/4/5 ใบ ไม่ต้องสนใจตัวเลขบนการ์ด&lt;/li&gt;&lt;li&gt;อันดับของช่อง = จำนวนไอเท็มประเภทนั้นที่เธอมี (เป็น 0 ได้)&lt;/li&gt;&lt;li&gt;วัดและโรงเตี๊ยมมีอันดับต่ำกว่าช่องอื่นทั้งหมด เว้นแต่การ์ดมีไอคอนนั้น (ชามราเม็ง = โรงเตี๊ยม, ประตูโทริอิ = วัด) ซึ่งช่องนั้นจะมีอันดับสูงสุด&lt;/li&gt;&lt;/ul&gt;
+&lt;h3&gt;ตาของออโตมา&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;จั่วการ์ดแล้ววางหงายหน้าบนกองทิ้ง&lt;/li&gt;&lt;li&gt;ระยะ: ตัวเลขบนการ์ด (1–3) คือจำนวนช่องว่างสูงสุดที่เธอยอมเดิน ช่องที่มีคนอยู่ไม่นับ&lt;/li&gt;&lt;li&gt;ย้ายไปยังช่องในระยะที่มีอันดับสูงสุด ถ้าเสมอให้เลือกช่องที่ใกล้ที่สุด&lt;/li&gt;&lt;li&gt;ทำตามช่องนั้น:&lt;ul&gt;&lt;li&gt;วัด: วางเหรียญ 2 เหรียญจากกองกลางและได้ 2 แต้ม&lt;/li&gt;&lt;li&gt;โรงเตี๊ยม: ยังไม่ซื้ออาหารจนกว่านักเดินทางทั้ง 3 คนจะมาถึง&lt;/li&gt;&lt;li&gt;ช่องอื่น: ได้ไอเท็มประเภทนั้น 1 ชิ้น (ฟาร์มได้ 1 เหรียญ ไม่ใช่ 3) และได้ 1 แต้มต่อไอเท็มประเภทนั้นที่เธอมีตอนนี้ ไม่ได้ผลปกติของช่อง&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;h3&gt;ตาของคุณ&lt;/h3&gt;&lt;p&gt;เล่นตามปกติ แต่การ์ดอาหารจะยังไม่เปิดจนกว่าทุกคนจะถึงโรงเตี๊ยม&lt;/p&gt;
+&lt;h3&gt;โรงเตี๊ยม&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;ที่โรงเตี๊ยมระหว่างทาง สับการ์ดออโตมาทั้งหมดเป็นสำรับใหม่ (ใช้ปุ่มสับสำรับ)&lt;/li&gt;&lt;li&gt;จั่วการ์ดอาหาร 4 ใบ และเรียงตามลำดับที่จั่ว&lt;/li&gt;&lt;li&gt;ซื้อตามลำดับที่มาถึง ออโตมาแต่ละตัวเลือกใบที่ถูกที่สุด (ใบที่จั่วก่อนถ้าราคาเท่ากัน) ไม่ต้องจ่ายเงิน และได้ 6 แต้ม อาหารชนิดซ้ำได้&lt;/li&gt;&lt;/ol&gt;
+&lt;h3&gt;จบการเดินทาง&lt;/h3&gt;&lt;p&gt;ทำตามปกติ สำหรับรางวัลนักสะสม ของที่ระลึกแต่ละชิ้นของออโตมานับเป็น 2&lt;/p&gt;
+&lt;h3&gt;ระดับความยาก&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;ระดับ 1/2/3 (คุณ): จั่วการ์ดความยาก 5/3/1 ใบ และทำเหมือนคุณหยุดที่ช่องนั้น โดยไม่ขยับตัว&lt;/li&gt;&lt;li&gt;ระดับ 4: ค่าเริ่มต้น ไม่เปลี่ยนแปลง&lt;/li&gt;&lt;li&gt;ระดับ 5/6/7 (ออโตมาแต่ละตัว): เธอจั่วการ์ดความยาก 1/3/5 ใบ ทำเหมือนเธอหยุดที่ช่องนั้น โดยไม่ขยับตัว&lt;/li&gt;&lt;/ul&gt;
+&lt;h3&gt;Crossroads&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;ใช้การ์ดชนิดที่เพิ่มมาประเภทละ 3 ใบ (สุ่มสำหรับเครื่องราง ของวิเศษ และอักษรศิลป์) ออโตมาแต่ละตัวได้ 5 แต้มเพิ่ม&lt;/li&gt;&lt;li&gt;“Rare and precious” ใช้ไม่ได้ “Good luck” ใช้กับคุณเท่านั้น&lt;/li&gt;&lt;/ul&gt;
+&lt;h3&gt;มัตสึริ&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;เอานักเดินทาง Kushinada, Misaki*, Musubi และ Takeru* ออกจากเกม (* ใช้ได้ แต่เก่งขึ้นในโหมดเดี่ยว)&lt;/li&gt;&lt;li&gt;เมื่อออโตมาเลือกมัตสึริ ให้นำการ์ดบนสุดของกองมัตสึริมาใช้ ดูแท็บ “เมื่อมีออโตมา” ในหน้ามัตสึริ&lt;/li&gt;&lt;/ul&gt;
+&lt;h3&gt;โปรโมชัน&lt;/h3&gt;&lt;p&gt;Antoine, Eriku, Naïade และ New Encounters ใช้ได้โดยไม่ต้องดัดแปลง ส่วน Felicia ใช้ไม่ได้&lt;/p&gt;
+">
 <h3>Play area layout</h3><img class="ref" src="img/ref.webp" alt="Automa play area: face-down item columns, a coin column, face-up Meals and Achievements">
 <p>Items sit in face-down columns, Meals and Achievements face up.</p>
 <h3>General</h3><ul>
@@ -111,9 +150,14 @@ select{font:inherit;padding:.3rem;border:1.5px solid var(--ink);border-radius:6p
 <h3>Promos</h3><p>Antoine, Eriku, Naïade and New Encounters work unchanged. Felicia can’t be used.</p>
 </div></dialog>
 
-<dialog id="dMat"><div class="dh"><h2>Matsuri cards and the Automas</h2><button id="xMat">Close</button></div><div class="db"><p>Items an Automa receives from a Matsuri card are resolved as normal. When an Automa picks a Matsuri, put the top card of the Matsuri deck into play.</p><input id="mq" type="search" placeholder="Filter by name or effect" aria-label="Filter Matsuri cards"><div id="mList"></div></div></dialog>
+<dialog id="dRef" class="wide"><div class="dtop"><div class="dh"><h2 data-th="ข้อมูลอ้างอิง">Reference</h2><button id="xRef" data-th="ปิด">Close</button></div><div class="rtabs" role="tablist" aria-label="Reference sections"><button role="tab" id="rt-char" data-t="char" data-th="ตัวละคร">Characters</button><button role="tab" id="rt-mat" data-t="mat" data-th="มัตสึริ">Matsuri</button><button role="tab" id="rt-amu" data-t="amu" data-th="เครื่องราง">Amulets</button><button role="tab" id="rt-cal" data-t="cal" data-th="อักษรศิลป์">Calligraphy</button><button role="tab" id="rt-leg" data-t="leg" data-th="ของวิเศษ">Legendary</button><button role="tab" id="rt-aid" data-t="aid" data-th="ตารางอ้างอิงผู้เล่น">Player aid</button></div></div>
+<div class="db" id="rp-char" role="tabpanel"><div class="fl"><input id="cq" type="search" placeholder="Filter by name or ability" aria-label="Filter characters"><select id="cs" aria-label="Filter by set"><option value="" data-th="ทุกชุด">All sets</option><option>Base</option><option>Crossroads</option><option>Matsuri</option></select></div><div id="cList" class="grid"></div></div>
+<div class="db" id="rp-mat" role="tabpanel"><div class="tabs" role="group" aria-label="Matsuri mode"><button data-th="การเล่นปกติ" id="tN" aria-pressed="true">Normal play</button><button data-th="เมื่อมีออโตมา" id="tA" aria-pressed="false">With Automas</button></div><p id="mNote"></p><input id="mq" type="search" placeholder="Filter by name or effect" aria-label="Filter Matsuri cards"><div id="mList" class="grid mg"></div></div>
+<div class="db" id="rp-skill" role="tabpanel"><div id="rList" class="grid sk"></div></div>
+<div class="db" id="rp-leg" role="tabpanel"><div id="lList" class="grid sk"></div></div>
+<div class="db" id="rp-aid" role="tabpanel"><img class="aid" src="img/aid.webp" alt="Player reference cards: what each space does"></div></dialog>
 
-<dialog id="dSetup"><div class="dh"><h2>Game setup</h2><button id="xSetup">Close</button></div><div class="db" id="setupBody"></div></dialog>
+<dialog id="dSetup"><div class="dh"><h2 data-th="ตั้งค่าเกม">Game setup</h2><span><button id="bLang2" aria-label="Language">ไทย</button> <button id="xSetup" data-th="ปิด">Close</button></span></div><div class="db" id="setupBody"></div></dialog>
 
 <script>
 const $=id=>document.getElementById(id),CK='tokaido_automa',N=16;
@@ -121,29 +165,31 @@ const COL=['#3a9d99','#c4432b'],NAME=['Automa A','Automa B'];
 const SPACE=['Encounter','Rice Paddy','Shop','Farm','Sea','Hot Spring','Mountain'];
 const NEED_YOU={1:5,2:3,3:1,4:0},NEED_A={4:0,5:1,6:3,7:5};
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
-const fresh=()=>({v:1,done:false,step:0,turn:0,lv:[4,4,4],lvDeck:[0,1,2].map(()=>shuf([0,1,2,3,4,5,6])),lvDrawn:[[],[],[]],deck:shuf([...Array(N).keys()]),disc:[]});
+const fresh=()=>({v:1,done:false,step:0,turn:0,lv:[4,4,4],lvDeck:[0,1,2].map(()=>shuf([0,1,2,3,4,5,6])),lvDrawn:[[],[],[]],deck:shuf([...Array(N).keys()]),disc:[],prev:null});
+let LG=(document.cookie.match(/(?:^|; )tl=(en|th)/)||[])[1];try{LG=LG||localStorage.getItem('tl')}catch(e){}LG=LG||((navigator.language||'').startsWith('th')?'th':'en');
+const L=(e,t)=>LG==='th'?t:e,nm=i=>L(['Automa A','Automa B'][i],['ออโตมา A','ออโตมา B'][i]),whoN=i=>i?nm(i-1):L('You','คุณ');
+const spN=k=>L(SPACE[k],['การพบปะ','นาข้าว','ร้านค้า','ฟาร์ม','ทะเล','บ่อน้ำพุร้อน','ภูเขา'][k]);
 let S;
 function save(){const s=encodeURIComponent(JSON.stringify(S));document.cookie=CK+'='+s+';max-age=31536000;path=/;SameSite=Lax';try{localStorage.setItem(CK,s)}catch(e){}}
 function load(){let m=document.cookie.split('; ').find(x=>x.startsWith(CK+'='));let s=m?m.slice(CK.length+1):null;if(!s)try{s=localStorage.getItem(CK)}catch(e){}
  try{const o=JSON.parse(decodeURIComponent(s));if(o&&o.v===1)return o}catch(e){}return fresh()}
 // index 0=You,1=Automa A,2=Automa B
-const who=['You','Automa A','Automa B'];
+
 function render(){
- $('who').innerHTML=NAME.map((n,i)=>`<button data-i="${i}" aria-pressed="${S.turn===i}" style="border-color:${S.turn===i?COL[i]:''}"><span class="dot" style="background:${COL[i]}"></span>${n}</button>`).join('');
  $('deck').innerHTML=S.deck.length?`<div class="stack"></div><img class="c" src="img/aback.webp" alt="Automa deck">`:'';
- $('deckCap').textContent=S.deck.length?`Deck: ${S.deck.length} card${S.deck.length>1?'s':''}`:'Deck empty';
+ $('deckCap').textContent=S.deck.length?L(`Deck: ${S.deck.length} card${S.deck.length>1?'s':''}`,`สำรับ: ${S.deck.length} ใบ`):L('Deck empty','สำรับหมดแล้ว');
  const top=S.disc[S.disc.length-1];
  $('pile').innerHTML=top?`<img class="c" src="img/a${String(top.c).padStart(2,'0')}.webp" alt="Last drawn Automa card">`:'';
- $('pileCap').textContent=top?`Drawn: ${S.disc.length} · ${NAME[top.w]}`:'No cards drawn yet';
+ $('pileCap').textContent=top?L(`Drawn: ${S.disc.length} · ${nm(top.w)}`,`จั่วแล้ว: ${S.disc.length} · ${nm(top.w)}`):L('No cards drawn yet','ยังไม่ได้จั่วการ์ด');
  $('hist').innerHTML=S.disc.slice(-5,-1).reverse().map(d=>`<span><img src="img/a${String(d.c).padStart(2,'0')}.webp" alt=""><i style="background:${COL[d.w]}"></i></span>`).join('');
- $('bDraw').disabled=!S.deck.length||busy;
+ $('drawRow').innerHTML=[0,1].map(i=>`<button class="go" data-d="${i}" style="background:${COL[i]};border-color:${COL[i]}" ${S.deck.length&&!busy?'':'disabled'}>${L('Draw for ','จั่วให้ ')}${nm(i)}</button>`).join('');$('bUndo').disabled=busy||!(S.disc.length||S.prev);
 }
 let busy=false;
-function draw(){
+function draw(i){
  if(!S.deck.length||busy)return;
- const c=S.deck[0],w=S.turn,dr=$('deck').getBoundingClientRect(),pr=$('pile').getBoundingClientRect();
- const finish=()=>{S.deck.shift();S.disc.push({c,w});save();render();busy=false;fly&&fly.remove()};
- let fly;busy=true;$('bDraw').disabled=true;
+ const c=S.deck[0],w=i,dr=$('deck').getBoundingClientRect(),pr=$('pile').getBoundingClientRect();
+ const finish=()=>{S.deck.shift();S.disc.push({c,w});S.prev=null;save();busy=false;fly&&fly.remove();render()};
+ let fly;busy=true;document.querySelectorAll('#drawRow button').forEach(b=>b.disabled=true);
  if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return}
  fly=document.createElement('div');fly.className='fly';
  Object.assign(fly.style,{left:dr.left+'px',top:dr.top+'px',width:dr.width+'px',height:dr.height+'px'});
@@ -152,49 +198,147 @@ function draw(){
  const dx=pr.left-dr.left,dy=pr.top-dr.top,P='perspective(1200px) ';
  fly.animate([{transform:P+'translate(0,0) rotateY(0deg) scale(1)'},{transform:P+`translate(${dx*.5}px,${dy*.5-30}px) rotateY(90deg) scale(1.08)`,offset:.5},{transform:P+`translate(${dx}px,${dy}px) rotateY(180deg) scale(1)`}],{duration:800,easing:'ease-in-out',fill:'forwards'}).onfinish=finish;
 }
-function reshuffle(){if(S.disc.length&&!confirm('Shuffle all 16 Automa cards into a new deck?'))return;S.deck=shuf([...Array(N).keys()]);S.disc=[];save();render()}
-$('who').onclick=e=>{const b=e.target.closest('button');if(b){S.turn=+b.dataset.i;save();render()}};
-$('bDraw').onclick=draw;$('bInn').onclick=reshuffle;
+function undo(){
+ if(busy)return;
+ if(!S.disc.length){if(S.prev){S.deck=S.prev.deck;S.disc=S.prev.disc;S.prev=null;save();render()}return}
+ const d=S.disc[S.disc.length-1],pr=$('pile').getBoundingClientRect(),dr=$('deck').getBoundingClientRect();
+ const finish=()=>{S.deck.unshift(d.c);save();busy=false;fly&&fly.remove();render()};
+ let fly;busy=true;S.disc.pop();render();$('bUndo').disabled=true;
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return}
+ fly=document.createElement('div');fly.className='fly';
+ Object.assign(fly.style,{left:pr.left+'px',top:pr.top+'px',width:pr.width+'px',height:pr.height+'px'});
+ fly.innerHTML=`<img src="img/aback.webp" alt=""><img class="fr" src="img/a${String(d.c).padStart(2,'0')}.webp" alt="">`;
+ document.body.appendChild(fly);
+ const dx=dr.left-pr.left,dy=dr.top-pr.top,P='perspective(1200px) ';
+ fly.animate([{transform:P+'translate(0,0) rotateY(180deg) scale(1)'},{transform:P+`translate(${dx*.5}px,${dy*.5-30}px) rotateY(90deg) scale(1.08)`,offset:.5},{transform:P+`translate(${dx}px,${dy}px) rotateY(0deg) scale(1)`}],{duration:700,easing:'ease-in-out',fill:'forwards'}).onfinish=finish;
+}
+function reshuffle(){if(S.disc.length&&!confirm(L('Shuffle all 16 Automa cards into a new deck? You can undo this.','สับการ์ดออโตมาทั้ง 16 ใบเป็นสำรับใหม่? ย้อนกลับได้')))return;S.prev={deck:S.deck,disc:S.disc};S.deck=shuf([...Array(N).keys()]);S.disc=[];save();render()}
+$('drawRow').onclick=e=>{const b=e.target.closest('button');if(b&&!b.disabled)draw(+b.dataset.d)};$('bUndo').onclick=undo;$('bInn').onclick=reshuffle;
 $('bRules').onclick=()=>$('dRules').showModal();$('xRules').onclick=()=>$('dRules').close();
 $('bSetup').onclick=openSetup;$('xSetup').onclick=()=>{$('dSetup').close()};
-$('bNew').onclick=()=>{if(confirm('Start a new game? The saved game will be erased.')){S=fresh();save();render();openSetup()}};
+$('bNew').onclick=()=>{if(confirm(L('Start a new game? The saved game will be erased.','เริ่มเกมใหม่? เกมที่บันทึกไว้จะถูกลบ'))){S=fresh();save();render();openSetup()}};
 // matsuri
-const MAT=[["Cho-yo","Each Automa scores 2 points and the 2 extra Meal cards are drawn."],
-["Gion matsuri","If an Automa stops at an Encounter space, she scores 1 point in addition to receiving a card."],
-["Hadaka matsuri","When an Automa stops at a Hot Spring, she receives 1 Encounter card in addition to the Hot Spring card."],
-["Hina matsuri","Each Automa scores 2 points but doesn’t get a token."],
-["o-Bon","Place 1 coin from the reserve in each Automa’s Temple area. Each scores 1 point."],
-["o-Fune matsuri","Each Automa receives 1 Sea Panorama card and scores for it."],
-["o-Hanami","If an Automa stops at a Panorama space, she scores 2 points and receives a Panorama card."],
-["o-Shogatsu","Each Automa scores 4 points instead of rolling the die."],
-["o-Taue matsuri","If an Automa stops at a Rice Paddy space, place 1 coin from the reserve in her Temple area (she scores 1 point). She also receives a Rice Paddy Panorama card."],
-["o-Tsukimi","Each Automa scores 6 points, but the Calligraphy card doesn’t apply to them. If an Automa arrived first at this Inn, the topmost Calligraphy card is drawn."],
-["Tango","Each Automa scores 2 points but doesn’t receive a token."],
-["Tori no Ichi","Each Automa scores 3 points but doesn’t receive an Amulet."],
-["Yama no Ko","If an Automa stops on a Mountain space, she receives 2 Mountain Panorama cards. Resolve them one at a time."]];
-const MPLAIN=["Hanabi","Kamiarisai","Mura matsuri","Setsubun","Shishimai","Tanabata","Tôka Ebisu"];
-function mat(q=''){q=q.toLowerCase();const m=x=>x.toLowerCase().includes(q);
- $('mList').innerHTML=MAT.filter(x=>m(x[0])||m(x[1])).map(x=>`<div class="mi"><b>${x[0]}</b><br>${x[1]}</div>`).join('')+
- MPLAIN.filter(m).map(x=>`<div class="mi plain"><b>${x}</b><br>Works without modification.</div>`).join('')||'<p>No Matsuri card matches.</p>'}
-$('bMat').onclick=()=>{$('mq').value='';mat();$('dMat').showModal()};$('xMat').onclick=()=>$('dMat').close();$('mq').oninput=e=>mat(e.target.value);
+const MAT=[["Cho-yo","The first player to reach the next Inn draws two extra Meal cards. All Meals at that Inn cost 1 coin less.","Each Automa scores 2 points and the 2 extra Meal cards are drawn."],
+["Gion matsuri","Until the next Inn, players on pink (Encounter) spaces can look through the remaining Encounter cards and pick one.","If an Automa stops at an Encounter space, she scores 1 point in addition to receiving a card."],
+["Hadaka matsuri","Until the next Inn, landing on a Hot Springs space also draws a pink card.","When an Automa stops at a Hot Spring, she receives 1 Encounter card in addition to the Hot Spring card."],
+["Hanabi","Two more Matsuri cards are drawn blind and put into play immediately.",""],
+["Hina matsuri","Each feminine character gains a doll token. It counts as a souvenir of that category; no effect on achievements.","Each Automa scores 2 points but doesn’t get a token."],
+["Kamiarisai","Place “Closed” tokens on all Temple spaces except the on-road double spaces, which become single.",""],
+["Mura matsuri","Place “Closed” tokens on all Farm spaces except the on-road double spaces, which become single.",""],
+["o-Bon","In order of arrival at the Inn, each player donates 0–3 coins to the Temple. Character abilities don’t apply.","Place 1 coin from the reserve in each Automa’s Temple area. Each scores 1 point."],
+["o-Fune matsuri","Each player immediately gains the next Sea panorama card. If two players finish simultaneously, both gain 3 points.","Each Automa receives 1 Sea Panorama card and scores for it."],
+["o-Hanami","Until the next Inn, take a coin from the bank whenever you land on a panorama space.","If an Automa stops at a Panorama space, she scores 2 points and receives a Panorama card."],
+["o-Shogatsu","In order of arrival at the Inn, each player rolls the die and takes that many coins (1–4).","Each Automa scores 4 points instead of rolling the die."],
+["o-Taue matsuri","Until the next Inn, landing on a Paddy space donates 1 coin from the bank to the Temple.","If an Automa stops at a Rice Paddy space, place 1 coin from the reserve in her Temple area (1 point). She also receives a Rice Paddy Panorama card."],
+["o-Tsukimi","The player who drew this card picks a Calligraphy card from the stack. Its effects apply to all players at game end.","Each Automa scores 6 points, but the Calligraphy card doesn’t apply to them. If an Automa arrived first at this Inn, the topmost Calligraphy card is drawn."],
+["Setsubun","In order of arrival at the Inn, each player rolls the die and gains that many points (1–4).",""],
+["Shishimai","The top three Temple donors score 4, 2 and 1 points. Ties resolved by all ties getting the highest rewards of that tier.",""],
+["Tanabata","The four end-game achievements are also awarded as a 2-point token each. This doesn’t prevent the end achievements.",""],
+["Tango","Each masculine character gains a carp token. It counts as a souvenir of that category; no effect on achievements.","Each Automa scores 2 points but doesn’t receive a token."],
+["Tôka Ebisu","Place “Closed” tokens on all Shop spaces except the on-road double spaces, which become single.",""],
+["Tori no Ichi","Each player without an Amulet immediately draws a random Amulet card.","Each Automa scores 3 points but doesn’t receive an Amulet."],
+["Yama no Ko","Until the next Inn, landing on a Mountain space draws an additional Mountain panorama card.","If an Automa stops on a Mountain space, she receives 2 Mountain Panorama cards, resolved one at a time."]];
+// card image order (from the player aid)
+const MIMG={"Cho-yo":0,"Gion matsuri":1,"Hadaka matsuri":2,"Hanabi":3,"Hina matsuri":4,"Kamiarisai":5,"Mura matsuri":6,"o-Bon":7,"o-Fune matsuri":8,"o-Shogatsu":9,"o-Taue matsuri":10,"o-Tsukimi":11,"o-Hanami":12,"Shishimai":13,"Setsubun":14,"Yama no Ko":15,"Tori no Ichi":16,"Tôka Ebisu":17,"Tango":18,"Tanabata":19};
+const MATT=[["ผู้เล่นคนแรกที่ถึงโรงเตี๊ยมถัดไปจั่วการ์ดอาหารเพิ่ม 2 ใบ อาหารทุกใบที่โรงเตี๊ยมนั้นถูกลง 1 เหรียญ", "ออโตมาแต่ละตัวได้ 2 แต้ม และจั่วการ์ดอาหารเพิ่ม 2 ใบ"], ["จนถึงโรงเตี๊ยมถัดไป ผู้เล่นที่อยู่ช่องสีชมพู (การพบปะ) ดูการ์ดการพบปะที่เหลือและเลือกได้ 1 ใบ", "ถ้าออโตมาหยุดที่ช่องการพบปะ จะได้ 1 แต้มเพิ่มจากการได้รับการ์ด"], ["จนถึงโรงเตี๊ยมถัดไป เมื่อหยุดที่ช่องบ่อน้ำพุร้อน จะจั่วการ์ดสีชมพูเพิ่มด้วย", "เมื่อออโตมาหยุดที่บ่อน้ำพุร้อน จะได้การ์ดการพบปะ 1 ใบเพิ่มจากการ์ดบ่อน้ำพุร้อน"], ["จั่วการ์ดมัตสึริเพิ่มอีก 2 ใบโดยไม่เปิดดู แล้วนำมาใช้พร้อมกันทันที", ""], ["ตัวละครหญิงแต่ละตัวได้โทเคนตุ๊กตา นับเป็นของที่ระลึกในหมวดนั้น ไม่มีผลต่อรางวัลความสำเร็จ", "ออโตมาแต่ละตัวได้ 2 แต้ม แต่ไม่ได้รับโทเคน"], ["วางโทเคน “ปิด” บนช่องวัดทั้งหมด ยกเว้นช่องคู่บนถนน ซึ่งจะกลายเป็นช่องเดี่ยว", ""], ["วางโทเคน “ปิด” บนช่องฟาร์มทั้งหมด ยกเว้นช่องคู่บนถนน ซึ่งจะกลายเป็นช่องเดี่ยว", ""], ["ตามลำดับที่มาถึงโรงเตี๊ยม ผู้เล่นแต่ละคนบริจาค 0–3 เหรียญให้วัด ความสามารถของตัวละครใช้ไม่ได้", "วางเหรียญ 1 เหรียญจากกองกลางในพื้นที่วัดของออโตมาแต่ละตัว ได้ตัวละ 1 แต้ม"], ["ผู้เล่นแต่ละคนได้การ์ดทิวทัศน์ทะเลใบถัดไปทันที ถ้าสองคนทำครบพร้อมกัน ทั้งคู่ได้ 3 แต้ม", "ออโตมาแต่ละตัวได้การ์ดทิวทัศน์ทะเล 1 ใบ และนับแต้มตามปกติ"], ["จนถึงโรงเตี๊ยมถัดไป รับเหรียญ 1 เหรียญจากธนาคารทุกครั้งที่หยุดที่ช่องทิวทัศน์", "ถ้าออโตมาหยุดที่ช่องทิวทัศน์ จะได้ 2 แต้มและรับการ์ดทิวทัศน์"], ["ตามลำดับที่มาถึงโรงเตี๊ยม ผู้เล่นแต่ละคนทอยลูกเต๋าและรับเหรียญตามแต้มที่ทอยได้ (1–4)", "ออโตมาแต่ละตัวได้ 4 แต้มแทนการทอยลูกเต๋า"], ["จนถึงโรงเตี๊ยมถัดไป เมื่อหยุดที่ช่องนาข้าว ให้บริจาค 1 เหรียญจากธนาคารให้วัด", "ถ้าออโตมาหยุดที่ช่องนาข้าว วางเหรียญ 1 เหรียญจากกองกลางในพื้นที่วัดของเธอ (ได้ 1 แต้ม) และรับการ์ดทิวทัศน์นาข้าวด้วย"], ["ผู้เล่นที่จั่วการ์ดนี้เลือกการ์ดอักษรศิลป์จากกอง ผลของการ์ดนั้นใช้กับผู้เล่นทุกคนเมื่อจบเกม", "ออโตมาแต่ละตัวได้ 6 แต้ม แต่การ์ดอักษรศิลป์ไม่มีผลกับออโตมา ถ้าออโตมาถึงโรงเตี๊ยมนี้เป็นคนแรก ให้จั่วการ์ดอักษรศิลป์ใบบนสุด"], ["ตามลำดับที่มาถึงโรงเตี๊ยม ผู้เล่นแต่ละคนทอยลูกเต๋าและได้แต้มตามที่ทอยได้ (1–4)", ""], ["ผู้บริจาคให้วัดมากที่สุดสามอันดับแรกได้ 4, 2 และ 1 แต้ม ถ้าเสมอกัน ทุกคนที่เสมอกันได้รางวัลสูงสุดของลำดับนั้น", ""], ["รางวัลความสำเร็จท้ายเกมทั้งสี่ได้รับเป็นโทเคน 2 แต้มด้วย ไม่ขัดขวางรางวัลท้ายเกมตามปกติ", ""], ["ตัวละครชายแต่ละตัวได้โทเคนปลาคาร์ป นับเป็นของที่ระลึกในหมวดนั้น ไม่มีผลต่อรางวัลความสำเร็จ", "ออโตมาแต่ละตัวได้ 2 แต้ม แต่ไม่ได้รับโทเคน"], ["วางโทเคน “ปิด” บนช่องร้านค้าทั้งหมด ยกเว้นช่องคู่บนถนน ซึ่งจะกลายเป็นช่องเดี่ยว", ""], ["ผู้เล่นที่ไม่มีการ์ดเครื่องรางจั่วการ์ดเครื่องรางแบบสุ่มจากกองทันที", "ออโตมาแต่ละตัวได้ 3 แต้ม แต่ไม่ได้รับเครื่องราง"], ["จนถึงโรงเตี๊ยมถัดไป ผู้เล่นที่หยุดที่ช่องภูเขาจั่วการ์ดทิวทัศน์ภูเขาเพิ่มอีก 1 ใบ", "ถ้าออโตมาหยุดที่ช่องภูเขา จะได้รับการ์ดทิวทัศน์ภูเขา 2 ใบ จัดการทีละใบ"]],CHT=["ที่โรงเตี๊ยมระหว่างทาง รับเหรียญ 1 เหรียญจากผู้เดินทางข้างเคียงแต่ละคน (จากธนาคารถ้าเขาจ่ายไม่ได้ หรือคุณมาถึงเป็นคนแรกหรือคนสุดท้าย)", "รับเหรียญ 1 เหรียญจากธนาคารทุกครั้งที่ผู้เดินทางคนใดหยุดที่ช่องการพบปะ", "รับเหรียญ 1 เหรียญจากธนาคารทุกครั้งที่ผู้เดินทางคนใดหยุดที่ช่องวัด", "อาหารราคาถูกลง 1 เหรียญ", "ทุกครั้งที่หยุดที่วัด รับเหรียญบริจาค 1 เหรียญจากธนาคาร", "อาหารราคา 1 เหรียญ และของที่ระลึกประเภทของชิ้นเล็ก (พัด) ที่หมู่บ้านฟรี", "ที่ช่องการพบปะ จั่วการ์ดการพบปะ 2 ใบ แล้วเลือก 1 ใบ", "ซื้อของที่ระลึก 1 ชิ้นในราคา 1 เหรียญที่หมู่บ้านแต่ละแห่ง", "เสี่ยงโชค 1 เหรียญได้ที่โรงเตี๊ยมระหว่างทางทุกแห่ง", "ได้การพบปะฟรีที่โรงเตี๊ยมระหว่างทางทุกแห่ง", "ของที่ระลึกประเภทศิลปะ (รูปปั้น) และของวิเศษถูกลง 1 เหรียญ", "ที่โรงเตี๊ยม 4 แห่งแรก ออกเดินทางก่อนใครได้ ไม่ว่าจะมาถึงลำดับไหน", "ได้ 1 แต้มต่อรางวัลความสำเร็จและการ์ดบ่อน้ำพุร้อนแต่ละใบ", "ได้รับเครื่องรางสุ่มฟรีที่โรงเตี๊ยมระหว่างทาง", "เมื่อเริ่มเกม ผู้เดินทางคนอื่นทุกคนให้เหรียญเธอ 1 เหรียญ และเธอแอบดูการ์ดอักษรศิลป์และเครื่องรางของคู่แข่งได้", "ได้ 1 เหรียญทุกครั้งที่หยุดที่ช่องทิวทัศน์", "เมื่อซื้อของที่ระลึก 2 ชิ้นขึ้นไป ชิ้นที่ถูกที่สุดฟรี (ต้องจ่ายไหวทุกชิ้น)", "ที่โรงเตี๊ยมทุกแห่ง เลือกกินอาหารสุ่มฟรีได้", "เมื่อจบเกม เพิ่มค่าการ์ดอักษรศิลป์ 1 ใบในคอลเลกชันเป็นสองเท่า", "ได้ของที่ระลึกสุ่ม 1 ชิ้นที่โรงเตี๊ยมระหว่างทางทุกแห่ง", "ได้ 1 แต้มและ 1 เหรียญที่ช่องการพบปะ", "ที่ร้านค้า จั่วของที่ระลึก 4 ใบและของวิเศษ 1 ใบแทนตัวเลือกปกติได้ และซื้อได้กี่ใบก็ได้", "ที่โรงเตี๊ยมระหว่างทาง ซื้ออาหารเพิ่มได้อีก 1 จาน: เปิดการ์ดอาหารใบบนสุดแล้วซื้อตามราคาที่ระบุ", "เลือกรับการ์ดทิวทัศน์ที่ต้องการได้ที่โรงเตี๊ยมระหว่างทางทุกแห่ง", "ได้การ์ดบ่อน้ำพุร้อนที่โรงเตี๊ยมระหว่างทางทุกแห่ง", "ที่ฟาร์ม ได้เหรียญเพิ่ม 1 เหรียญเมื่อเลือกรับ 3 เหรียญ หรือทอยลูกเต๋าโชคชะตาใหม่ได้เมื่อเลือกเสี่ยงโชค", "ทำได้ทั้งสองการกระทำที่ช่องการพบปะ", "ที่วัด ได้ 2 แต้มต่อเหรียญที่บริจาค และรับเครื่องรางฟรี", "เมื่อจบเกม ได้ 1 แต้มต่อการ์ดแต่ละประเภทที่ต่างกันในคอลเลกชัน", "ทำได้ทั้งสองการกระทำที่ช่องวัด", "ที่โรงเตี๊ยมระหว่างทางและโรงเตี๊ยมสุดท้าย ได้ 3 แต้มถ้าไม่ซื้ออาหาร", "ได้ 1 แต้มต่อเหรียญที่ใช้ซื้ออาหาร"],AMUT=["ครั้งต่อไปที่คุณต้องจ่ายเหรียญเพื่อซื้อของครั้งเดียว ให้บริจาคเหรียญเหล่านั้นให้วัดแทน", "นับช่องเดี่ยวใดก็ได้เป็นช่องคู่", "ใช้ได้ทั้งสองตัวเลือกที่จุดแวะถัดไป", "ถ้าอยู่ตำแหน่งนำ ได้เล่นอีกตา", "ทอยลูกเต๋าโชคชะตาและรับเหรียญตามแต้มที่ทอยได้", "รับอาหารฟรี 1 จานที่โรงเตี๊ยม"],CALT=["1 แต้มต่อดอกซากุระ และ 3 แต้มต่อทิวทัศน์ที่ทำครบ", "3 แต้มต่ออาหารที่ไม่ได้กิน", "2 แต้มต่อเหรียญที่เหลือเมื่อจบการเดินทาง", "1 แต้มต่อของที่ระลึก และ 2 แต้มต่อของวิเศษ", "6 แต้มถ้าเข้าโรงเตี๊ยมสุดท้ายเป็นคนสุดท้าย 4 แต้มถ้าเป็นคนรองสุดท้าย และ 2 แต้มสำหรับลำดับอื่น", "2 แต้มต่อรางวัลความสำเร็จ และ 1 แต้มต่อการ์ดอักษรศิลป์"];
+let mMode=0;
+function mat(){const q=$('mq').value.toLowerCase();
+ $('tN').setAttribute('aria-pressed',mMode===0);$('tA').setAttribute('aria-pressed',mMode===1);
+ $('mNote').textContent=mMode?L('Items an Automa receives from a Matsuri card are resolved as normal. When an Automa picks a Matsuri, put the top Matsuri card into play.','ของที่ออโตมาได้จากการ์ดมัตสึริจัดการตามปกติ เมื่อออโตมาเลือกมัตสึริ ให้นำการ์ดมัตสึริใบบนสุดมาใช้'):L('Effects for normal play. Switch tabs to see how each card changes for the Automas.','ผลสำหรับการเล่นปกติ สลับแท็บเพื่อดูว่าแต่ละใบเปลี่ยนไปอย่างไรสำหรับออโตมา');
+ $('mList').innerHTML=MAT.map((x,i)=>[x[0],mMode?(L(x[2],MATT[i][1])||L('Works without modification.','ทำงานโดยไม่ต้องดัดแปลง')):L(x[1],MATT[i][0])]).filter(x=>x[0].toLowerCase().includes(q)||x[1].toLowerCase().includes(q))
+ .map(x=>`<div class="tile mt"><img class="m" src="img/m${String(MIMG[x[0]]).padStart(2,'0')}.webp" alt="${x[0]}" loading="lazy" width="200" height="300"><div class="tx"><h4>${x[0]}</h4>${x[1]}</div></div>`).join('')||`<p>${L('No Matsuri card matches.','ไม่พบการ์ดมัตสึริที่ตรงกัน')}</p>`}
+$('mq').oninput=mat;
+$('tN').onclick=()=>{mMode=0;mat()};$('tA').onclick=()=>{mMode=1;mat()};
+// amulets / calligraphy
+const AMU=[["Devotion","The next time you’d spend coins on a single purchase, donate those coins to the Temple instead."],["Friendship","Treat any single-stop space as a double space."],["Health","Use both options at the next stop."],["Vitality","If in the lead position, take another turn."],["Fortune","Roll the fortune die and gain coins for the number shown."],["Hospitality","Take a meal for free at an Inn."]];
+const CAL=[["Contemplation","1 point per cherry blossom, 3 points per completed panorama."],["Fasting","3 points for each uneaten meal."],["Foresight","2 points for each coin at the end of the journey."],["Nostalgia","1 point per souvenir, 2 points per legendary item."],["Patience","6 points for last into the final Inn, 4 for second to last, 2 for all other positions."],["Perfection","2 points per accomplishment, 1 point per calligraphy card."]];
+let rk='a';
+const IMGA={Health:'health',Fortune:'fortune',Vitality:'vitality'},IMGC={Contemplation:'contemplation',Foresight:'foresight',Fasting:'fasting'};
+function ref(){const a=rk==='a',l=a?AMU:CAL,th=a?AMUT:CALT,im=a?IMGA:IMGC,fb=a?'health':'contemplation';
+ $('rList').innerHTML=l.map((x,i)=>`<div class="skill"><img src="img/k-${x[0].toLowerCase()}.webp" alt="" loading="lazy"><div><b>${x[0]}</b><br>${L(x[1],th[i])}</div></div>`).join('')}
+const LEG=[["Ema",2,"Counts as a new type of Souvenir (score it now).","นับเป็นของที่ระลึกประเภทใหม่ (ได้แต้มทันที)"],
+["Buppatsu",2,"Counts as a new type of Souvenir (score it now).","นับเป็นของที่ระลึกประเภทใหม่ (ได้แต้มทันที)"],
+["Emaki",1,"When acquired, score 1 point for each other Souvenir and/or Legendary Object in your collection. From now on, whenever you gain a Souvenir or Legendary Object, score 1 point.","เมื่อได้มา ได้ 1 แต้มต่อของที่ระลึกและ/หรือของวิเศษใบอื่นแต่ละใบในคอลเลกชัน จากนี้ไปทุกครั้งที่ได้ของที่ระลึกหรือของวิเศษ ได้ 1 แต้ม"],
+["Shodo",1,"When acquired, score 1 point for each other Souvenir and/or Legendary Object in your collection. From now on, whenever you gain a Souvenir or Legendary Object, score 1 point.","เมื่อได้มา ได้ 1 แต้มต่อของที่ระลึกและ/หรือของวิเศษใบอื่นแต่ละใบในคอลเลกชัน จากนี้ไปทุกครั้งที่ได้ของที่ระลึกหรือของวิเศษ ได้ 1 แต้ม"],
+["Murasame",3,"Sword: scores 8 points.","ดาบ: ได้ 8 แต้ม"],
+["Masamune",3,"Sword: scores 8 points.","ดาบ: ได้ 8 แต้ม"]];
+function leg(){$('lList').innerHTML=LEG.map(x=>`<div class="skill"><img src="img/g-${x[0].toLowerCase()}.webp" alt="" loading="lazy"><div><b>${x[0]}</b><br><span class="tag">${L(x[1]+' coin'+(x[1]===1?'':'s'),x[1]+' เหรียญ')}</span><br>${L(x[2],x[3])}</div></div>`).join('')}
+// unified reference dialog with tabs
+let rt='char';
+const RT={char:'rp-char',mat:'rp-mat',amu:'rp-skill',cal:'rp-skill',leg:'rp-leg',aid:'rp-aid'};
+function renderRef(){
+ document.querySelectorAll('.rtabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===rt));
+ ['rp-char','rp-mat','rp-skill','rp-leg','rp-aid'].forEach(id=>$(id).hidden=id!==RT[rt]);
+ if(rt==='char')chars();else if(rt==='mat')mat();else if(rt==='leg')leg();else if(rt==='amu'||rt==='cal'){rk=rt==='amu'?'a':'c';ref()}}
+function openRef(t){rt=t||rt;renderRef();if(!$('dRef').open)$('dRef').showModal();$('dRef').scrollTop=0}
+document.querySelectorAll('.rtabs button').forEach(b=>b.onclick=()=>{rt=b.dataset.t;renderRef();$('dRef').scrollTop=0});
+$('bChar').onclick=()=>openRef('char');$('bMat').onclick=()=>openRef('mat');$('bAmu').onclick=()=>openRef('amu');$('bCal').onclick=()=>openRef('cal');$('bLeg').onclick=()=>openRef('leg');$('bAid').onclick=()=>openRef('aid');
+$('xRef').onclick=()=>$('dRef').close();
+// characters: [name,set,coins,power,ability] ranked by power; art exists for first 10 (by guide rank 32-23)
+const CH=[["Musubi the rogue","Matsuri",6,"48","At intermediate inns, take 1 coin from each of your two neighbors (from the bank if one can’t pay, or you arrived first or last)."],
+["Takeru the counselor","Matsuri",4,"42 / 36","Take 1 coin from the bank whenever any traveler stops at an Encounter space."],
+["Misaki the disciple","Matsuri",4,"42 / 33","Take 1 coin from the bank whenever any traveler stops at a Temple space."],
+["Kinko the Ronin","Base",7,"41","Meals cost 1 less coin."],
+["Hirotada the priest","Base",8,"35","At each temple stop, receive 1 coin donation from the bank."],
+["Ayumu the walker","Matsuri",5,"35","Meals cost 1 coin. Small-object (fan) souvenirs are free at villages."],
+["Yoshiyasu the Functionary","Base",9,"32","At an Encounter stop, draw 2 Encounter cards and choose one."],
+["Zen-emon the merchant","Base",6,"32","Buy one souvenir for 1 coin at each village."],
+["Jirocho the Yakuza","Crossroads",5,"28.5","Can gamble 1 coin at each intermediate inn."],
+["Chuubei the messenger","Base",4,"27.5","Free Encounter at each intermediate inn."],
+["Titia the Dutch tourist","Matsuri",6,"27","Art-type (statue) souvenirs and legendary objects cost 1 coin less."],
+["Mutsumi the brute","Matsuri",7,"27","At the first 4 inns, leave the inn first regardless of arrival order."],
+["Mitsukuni the old man","Base",6,"27","1 point for each achievement and Hot Spring card."],
+["Yashima the noble","Matsuri",4,"27","Receives a free random amulet at intermediate inns."],
+["Kushinada the world traveler","Matsuri",4,"24–31","At game start every other traveler gives her 1 coin. She may secretly look at opponents’ calligraphy and amulet cards."],
+["Gotozaemon the Souvenir Seller","Crossroads",0,"27","Gain 1 coin at every panorama stop."],
+["Sasayakko the geisha","Base",5,"26","When buying 2+ souvenirs, the cheapest is free (must afford all)."],
+["Satsuki the orphan","Base",2,"25.5","At each inn, may eat a random meal for free."],
+["Marihito the writer","Matsuri",5,"25","At game end, double one calligraphy card in his collection."],
+["Daigoro the kid","Crossroads",3,"24.5","Gains a random souvenir at every intermediate inn."],
+["Umegae the street entertainer","Base",5,"23","Gain 1 point and 1 coin at Encounter stops."],
+["Rakuren the collector","Matsuri",5,"23","At a shop, may draw 4 souvenirs and 1 legendary object instead of the usual choices, and buy any of them."],
+["Kidzuna the cook","Matsuri",3,"23","At intermediate inns, may also buy a second meal: reveal the top Meal card and buy it at its cost.",9],
+["Hiroshige the Artist","Base",3,"23","Gains his choice of Panorama card at each intermediate inn.",8],
+["Chihaya the bather","Matsuri",3,"21.5","Receives a Hot Springs card at each intermediate inn.",7],
+["Iyasaka the manual worker","Matsuri",5,"21","At a farmhouse, gets 1 extra coin when taking 3 coins, or may re-roll the fortune die when gambling.",6],
+["Kita the old woman","Crossroads",4,"21","Can perform both actions at Encounter stops.",5],
+["Mari the poet","Matsuri",4,"21","At a temple, scores 2 points per donated coin; amulets are free.",4],
+["Suseri the erudite","Matsuri",3,"21","At game end, 1 point for each different type of card in her collection.",3],
+["Miyataka the Superstitious Woman","Crossroads",4,"18","Can perform both actions at Temple stops.",2],
+["Kamui the vagabond","Matsuri",3,"18","At intermediate inns and the last inn, scores 3 points if he buys no meal.",1],
+["Nampo the Gourmet","Crossroads",2,"16","Scores 1 point for each coin spent on meals.",0]];
+const DIFF={nampo:'h',kamui:'h',miyataka:'h',suseri:'h',mari:'m',kita:'h',iyasaka:'e',chihaya:'e',hiroshige:'m',kidzuna:'h',rakuren:'m',umegae:'m',daigoro:'e',marihito:'m',satsuki:'e',sasayakko:'m',gotozaemon:'m',kushinada:'e',yashima:'m',mitsukuni:'e',mutsumi:'e',titia:'e',chuubei:'e',jirocho:'e','zen-emon':'m',yoshiyasu:'e',ayumu:'e',hirotada:'e',kinko:'e',misaki:'e',takeru:'e',musubi:'e'};
+const DIFFN={e:['Easy','ง่าย'],m:['Medium','ปานกลาง'],h:['Hard','ยาก']};
+function dif(k){const t=DIFF[k];return t?`${L('difficulty','ความยาก')} <span class="dif ${t}">${L(DIFFN[t][0],DIFFN[t][1])}</span>`:''}
+function chars(){const q=$('cq').value.toLowerCase(),st=$('cs').value;
+ $('cList').innerHTML=CH.map((c,i)=>[c,i+1,L(c[4],CHT[i])]).filter(([c,r,ab])=>(!st||c[1]===st)&&(c[0].toLowerCase().includes(q)||ab.toLowerCase().includes(q))).map(([c,r,ab])=>{const k=c[0].split(' ')[0].toLowerCase();return `<div class="tile cs"><img src="img/c-${k}.webp" alt="${c[0]}" loading="lazy" width="360" height="485"><div class="tx"><h4>${c[0]}</h4><small><span class="tag">${c[1]}</span>${L(c[2]+' coin'+(c[2]===1?'':'s'),c[2]+' เหรียญ')} · ${L('power','พลัง')} ${c[3]} · ${dif(k)}</small>${ab}</div></div>`}).join('')||`<p>${L('No character matches.','ไม่พบตัวละครที่ตรงกัน')}</p>`}
+$('cq').oninput=chars;$('cs').onchange=chars;
 // setup wizard
 const STEPS=[
- ['Base setup',()=>`<p>Set up the board as for a <b>3-player game</b> using the game’s rulebook. Then set up each Automa in the next step.</p>`],
- ['Each Automa',()=>`<p>Do this for <b>Automa A</b> and <b>Automa B</b>:</p><ul><li>Choose a color. Take the Traveler piece and colored marker as usual.</li><li>Leave room for coins and cards, as in the Rules diagram.</li><li>Place her color token and <b>1 coin</b> in her play area. She scores <b>1 point</b> for it.</li><li>She gets no Traveler tile.</li></ul><img class="ref" src="img/ref.webp" alt="Automa play area layout">`],
- ['Crossroads',()=>`<p>Only if you play with the Crossroads expansion:</p><ul><li>Choose your Traveler.</li><li>Use only <b>3 cards</b> of each added type. Pick Amulets, Legendary Objects and Calligraphy at random. You may look at them.</li><li>Each Automa scores an extra <b>5 points</b>.</li></ul><p>Skip this step for the base game.</p>`],
- ['Difficulty',()=>{const lv=(i,o,need)=>`<div class="lv"><div class="row"><b>${who[i]}</b><label>Level <select data-lv="${i}">${o.map(x=>`<option ${S.lv[i]===x?'selected':''} value="${x}">${x===4?'4 (default)':x}</option>`).join('')}</select></label>
- <span>${need[S.lv[i]]?`draw ${need[S.lv[i]]} difficulty card${need[S.lv[i]]>1?'s':''}`:'no cards to draw'}</span></div>${need[S.lv[i]]?`<div class="row"><button data-dl="${i}" ${S.lvDrawn[i].length>=need[S.lv[i]]?'disabled':''}>Draw difficulty card</button></div>`:''}
- <div class="thumbs">${S.lvDrawn[i].slice(0,need[S.lv[i]]).map(k=>`<figure><img src="img/l${k}.webp" alt="${SPACE[k]}">${SPACE[k]}</figure>`).join('')}</div></div>`;
- return `<p>Set a level for you and for each Automa. Resolve each drawn card as if the player had stopped on that space, <b>without moving the Traveler</b>. Automas gain 1 item and score per item they now have of that type.</p>`+lv(0,[4,1,2,3],NEED_YOU)+lv(1,[4,5,6,7],NEED_A)+lv(2,[4,5,6,7],NEED_A)}],
- ['Start',()=>`<p>Shuffle the 16 Automa cards into a face-down deck. The app has already done this. Take turns in the normal order. On an Automa’s turn, pick her color above and draw.</p>`]];
+ [()=>L('Base setup','เตรียมเกมพื้นฐาน'),()=>L(`<p>Set up the board as for a <b>3-player game</b> using the game’s rulebook. Then set up each Automa in the next step.</p>`,`<p>ตั้งกระดานตามกติกา <b>เกม 3 ผู้เล่น</b> ในคู่มือเกม จากนั้นเตรียมออโตมาแต่ละตัวในขั้นตอนถัดไป</p>`)],
+ [()=>L('Each Automa','ออโตมาแต่ละตัว'),()=>L(`<p>Do this for <b>Automa A</b> and <b>Automa B</b>:</p><ul><li>Choose a color. Take the Traveler piece and colored marker as usual.</li><li>Leave room for coins and cards, as in the Rules diagram.</li><li>Place her color token and <b>1 coin</b> in her play area. She scores <b>1 point</b> for it.</li><li>She gets no Traveler tile.</li></ul>`,`<p>ทำดังนี้กับ <b>ออโตมา A</b> และ <b>ออโตมา B</b>:</p><ul><li>เลือกสี หยิบตัวนักเดินทางและมาร์กเกอร์สีตามปกติ</li><li>เว้นที่สำหรับเหรียญและการ์ดตามแผนภาพในกฎ</li><li>วางโทเคนสีและ <b>เหรียญ 1 เหรียญ</b> ในพื้นที่ของเธอ เธอได้ <b>1 แต้ม</b> จากเหรียญนั้น</li><li>เธอไม่ได้รับแผ่นนักเดินทาง</li></ul>`)+`<img class="ref" src="img/ref.webp" alt="">`],
+ [()=>'Crossroads',()=>L(`<p>Only if you play with the Crossroads expansion:</p><ul><li>Choose your Traveler.</li><li>Use only <b>3 cards</b> of each added type. Pick Amulets, Legendary Objects and Calligraphy at random. You may look at them.</li><li>Each Automa scores an extra <b>5 points</b>.</li></ul><p>Skip this step for the base game.</p>`,`<p>เฉพาะเมื่อเล่นกับภาคเสริม Crossroads:</p><ul><li>เลือกนักเดินทางของคุณ</li><li>ใช้การ์ดชนิดที่เพิ่มมาประเภทละ <b>3 ใบ</b> สุ่มสำหรับเครื่องราง ของวิเศษ และอักษรศิลป์ (ดูได้)</li><li>ออโตมาแต่ละตัวได้ <b>5 แต้ม</b> เพิ่ม</li></ul><p>ข้ามขั้นตอนนี้ถ้าเล่นเกมพื้นฐาน</p>`)],
+ [()=>L('Difficulty','ระดับความยาก'),()=>{const lv=(i,o,need)=>`<div class="lv"><div class="row"><b>${whoN(i)}</b><label>${L('Level','ระดับ')} <select data-lv="${i}">${o.map(x=>`<option ${S.lv[i]===x?'selected':''} value="${x}">${x===4?L('4 (default)','4 (ค่าเริ่มต้น)'):x}</option>`).join('')}</select></label>
+ <span>${need[S.lv[i]]?L(`draw ${need[S.lv[i]]} difficulty card${need[S.lv[i]]>1?'s':''}`,`จั่วการ์ดความยาก ${need[S.lv[i]]} ใบ`):L('no cards to draw','ไม่ต้องจั่วการ์ด')}</span></div>${need[S.lv[i]]?`<div class="row"><button data-dl="${i}" ${S.lvDrawn[i].length>=need[S.lv[i]]?'disabled':''}>${L('Draw difficulty card','จั่วการ์ดความยาก')}</button></div>`:''}
+ <div class="thumbs">${S.lvDrawn[i].slice(0,need[S.lv[i]]).map(k=>`<figure><img src="img/l${k}.webp" alt="${spN(k)}">${spN(k)}</figure>`).join('')}</div></div>`;
+ return L(`<p>Set a level for you and for each Automa. Resolve each drawn card as if the player had stopped on that space, <b>without moving the Traveler</b>. Automas gain 1 item and score per item they now have of that type.</p>`,`<p>ตั้งระดับให้ตัวคุณและออโตมาแต่ละตัว จั่วการ์ดแล้วทำเหมือนผู้เล่นหยุดที่ช่องนั้น <b>โดยไม่ขยับนักเดินทาง</b> ออโตมารับไอเท็ม 1 ชิ้นและได้แต้มตามจำนวนไอเท็มประเภทนั้นที่เธอมี</p>`)+lv(0,[4,1,2,3],NEED_YOU)+lv(1,[4,5,6,7],NEED_A)+lv(2,[4,5,6,7],NEED_A)}],
+ [()=>L('Start','เริ่มเกม'),()=>L(`<p>Shuffle the 16 Automa cards into a face-down deck. The app has already done this. Take turns in the normal order. On an Automa’s turn, pick her color above and draw.</p>`,`<p>สับการ์ดออโตมาทั้ง 16 ใบเป็นสำรับคว่ำหน้า แอปทำให้แล้ว เล่นตามลำดับปกติ ในตาของออโตมา ให้เลือกสีของเธอด้านบนแล้วจั่วการ์ด</p>`)]];
 function openSetup(){renderSetup();if(!$('dSetup').open)$('dSetup').showModal()}
 function renderSetup(){const i=S.step,l=STEPS.length;
- $('setupBody').innerHTML=`<div class="steps">Step ${i+1} of ${l}</div><h3 style="margin-top:.2rem">${STEPS[i][0]}</h3>${STEPS[i][1]()}<div class="nav"><button id="sBack" ${i?'':'disabled'}>Back</button><button id="sNext" class="${i===l-1?'go':''}">${i===l-1?'Start playing':'Next'}</button></div>`;
+ $('setupBody').innerHTML=`<div class="steps">${L(`Step ${i+1} of ${l}`,`ขั้นตอนที่ ${i+1} จาก ${l}`)}</div><h3 style="margin-top:.2rem">${STEPS[i][0]()}</h3>${STEPS[i][1]()}<div class="nav"><button id="sBack" ${i?'':'disabled'}>${L('Back','กลับ')}</button><button id="sNext" class="${i===l-1?'go':''}">${i===l-1?L('Start playing','เริ่มเล่น'):L('Next','ถัดไป')}</button></div>`;
  $('sBack').onclick=()=>{S.step--;save();renderSetup()};
  $('sNext').onclick=()=>{if(i===l-1){S.done=true;S.step=0;save();$('dSetup').close()}else{S.step++;save();renderSetup()}};
  document.querySelectorAll('[data-lv]').forEach(s=>s.onchange=()=>{const k=+s.dataset.lv;S.lv[k]=+s.value;S.lvDrawn[k]=[];S.lvDeck[k]=shuf([0,1,2,3,4,5,6]);save();renderSetup()});
  document.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>{const k=+b.dataset.dl;S.lvDrawn[k].push(S.lvDeck[k][S.lvDrawn[k].length]);save();renderSetup()});
 }
-S=load();render();if(!S.done)openSetup();
+function saveLang(){document.cookie='tl='+LG+';max-age=31536000;path=/;SameSite=Lax';try{localStorage.setItem('tl',LG)}catch(e){}}
+function applyLang(){document.documentElement.lang=LG;
+ document.querySelectorAll('[data-th]').forEach(el=>{if(el.dataset.en===undefined)el.dataset.en=el.innerHTML;el.innerHTML=LG==='th'?el.dataset.th:el.dataset.en});
+ $('bLang').textContent=$('bLang2').textContent='🌐 '+(LG==='th'?'EN':'ไทย');
+ $('cq').placeholder=L('Filter by name or ability','ค้นหาตามชื่อหรือความสามารถ');$('mq').placeholder=L('Filter by name or effect','ค้นหาตามชื่อหรือผล');
+ document.title=L('Tokaido Automa Deck','โทไกโด · สำรับออโตมา');
+ render();if($('dRef').open)renderRef();if($('dSetup').open)renderSetup()}
+$('bLang').onclick=$('bLang2').onclick=()=>{LG=LG==='th'?'en':'th';saveLang();applyLang()};
+S=load();applyLang();if(!S.done)openSetup();
 if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script></body></html>
