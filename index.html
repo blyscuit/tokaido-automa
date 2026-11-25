@@ -54,7 +54,7 @@ select{font:inherit;padding:.3rem;border:1.5px solid var(--ink);border-radius:6p
 .thumbs figure{margin:0;width:74px;text-align:center;font-size:.75rem}
 .thumbs img{width:100%;border-radius:6px;box-shadow:0 1px 4px #0004}
 .nav{display:flex;justify-content:space-between;margin-top:1.2rem}
-.mi{border-bottom:1px solid var(--line);padding:.55rem 0}.mi b{color:var(--sea)}.mi.plain{opacity:.85}#mq{width:100%;font:inherit;padding:.5rem .7rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}.refbar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:.6rem;background:#e4dcc6;border-bottom:1px solid var(--line)}.refbar button{border-color:var(--sea);color:#1f6f6b;background:var(--card)}
+.mi{border-bottom:1px solid var(--line);padding:.55rem 0}.mi b{color:var(--sea)}.mi.plain{opacity:.85}#mq{width:100%;font:inherit;padding:.5rem .7rem;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}.refbar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:.6rem;background:#e4dcc6;border-bottom:1px solid var(--line)}.refbar button{border-color:var(--sea);color:#1f6f6b;background:var(--card);display:inline-flex;align-items:center;gap:.4rem}.refbar .ri{height:1.5em;width:auto;flex:none;display:block;border-radius:2px}.refbar .ri.q{display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;border-radius:50%;border:1.5px solid currentColor;font-weight:700;font-size:.9em;line-height:1}
 .tabs{display:flex;gap:.5rem;margin:.6rem 0}.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
 .mi{display:flex;gap:.8rem;align-items:flex-start}.mi img{width:64px;border-radius:6px;box-shadow:0 1px 4px #0004;flex:none}
 .ch{display:flex;gap:.8rem;border-bottom:1px solid var(--line);padding:.6rem 0}.ch .pt{width:72px;height:72px;border-radius:50%;flex:none;object-fit:cover;background:#ddd5bd;display:grid;place-items:center;font-size:1.8rem;color:#8a8168}
@@ -71,11 +71,29 @@ dialog.wide{width:min(96vw,1100px)}
 .mg .tx{font-size:.8rem;padding:.4rem .5rem;line-height:1.35}.mg h4{font-size:.9rem}
 .grid.sk{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
 .skill{display:flex;gap:.8rem;align-items:flex-start;padding:.6rem;background:var(--card);border:1px solid var(--line);border-radius:10px}
-.skill img{width:150px;flex:none;filter:drop-shadow(0 1px 3px #0004)}.skill b{color:var(--sea)}
+.skill img{width:150px;flex:none;border-radius:8.5px;filter:drop-shadow(0 1px 3px #0004)}.skill b{color:var(--sea)}
 .db img.aid{display:block;width:100%;max-width:1000px;margin:0 auto;height:auto;filter:drop-shadow(0 2px 5px #0003)}
+.db h4.ex{color:var(--sea);margin:1.1rem 0 .2rem;font-size:1rem}.db img.ref.ex{display:block;max-width:600px;margin:.5rem auto}
+.play{max-width:900px;margin:0 auto;padding:0 1rem 2rem}.play h2{font-size:1.15rem;margin:.4rem 0 0;color:var(--sea)}
+.pa{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem .9rem;margin:.8rem 0}
+.pa h3{margin:0 0 .4rem;font-size:1.05rem}.psum{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.95rem;margin-bottom:.6rem}
+.psum span{border-radius:99px;padding:.1rem .7rem;border:2px solid var(--line)}.psum .s1{border-color:var(--seal);border-style:solid}.psum .s2{border-color:var(--sea);border-style:dashed}
+.prow{display:flex;gap:.4rem;overflow-x:auto;padding:.3rem 0 .4rem;align-items:flex-start}
+.pcol{flex:1 0 74px;min-width:74px;text-align:center;border:2px solid transparent;border-radius:8px;padding:.25rem .15rem}
+.pcol.hi1{border-color:var(--seal)}.pcol.hi2{border-color:var(--sea);border-style:dashed}
+.pcol .padd{min-height:72px;display:flex;flex-direction:column;align-items:center;gap:.2rem;width:100%;padding:.35rem .2rem;font-size:.8rem;line-height:1.2;border-radius:6px;color:#fff;font-weight:600}
+.pstack{position:relative;margin:.5rem .3rem .4rem;min-height:36px}
+.pstack.empty{border:2px dashed var(--line);border-radius:6px;height:54px}
+.pcard{position:absolute;left:0;right:0;height:54px;border-radius:6px;border:1px solid #0003;box-shadow:0 1px 3px #0004}
+.pcoin{position:absolute;left:50%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9a066,#a9743c 70%);border:1px solid #6b4620;box-shadow:0 1px 2px #0005}
+.pcoin::after{content:"";position:absolute;inset:11px;border:2px solid #6b4620;opacity:.7}
+.si{width:30px;height:30px;border-radius:50%;background:#fff;flex:none}.si.sm{width:18px;height:18px;vertical-align:-4px;margin-right:.25rem}
+.pi{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff;border:1px solid #0003}
+.play.both{max-width:1240px}.play.both #pAreas{display:flex;gap:.8rem;overflow-x:auto;align-items:flex-start}.play.both .pa{flex:1 0 440px;min-width:440px;margin:.8rem 0}
+.prk{font-size:.85rem;font-weight:700}.pm{padding:0 .5rem;font-size:.9rem;margin-top:.2rem;border-color:var(--line)}
 .dtop{position:sticky;top:0;z-index:3;background:var(--paper)}.dtop .dh{position:static}
 .rtabs{display:flex;gap:.35rem;padding:.5rem .8rem;overflow-x:auto;border-bottom:1px solid var(--line);background:#e4dcc6;scrollbar-width:none}.rtabs::-webkit-scrollbar{display:none}
-.rtabs button{flex:none;white-space:nowrap;border-color:var(--sea);color:#1f6f6b;background:var(--card)}.rtabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rtabs button{flex:none;white-space:nowrap;border-color:var(--sea);color:#1f6f6b;background:var(--card)}.rtabs button{display:inline-flex;align-items:center;gap:.4rem}.rtabs .ri{height:1.5em;width:auto;flex:none;display:block;border-radius:2px}.rtabs .ri.q{display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;border-radius:50%;border:1.5px solid currentColor;font-weight:700;font-size:.9em;line-height:1}.rtabs button[aria-selected=true] img[src$="char.webp"]{filter:invert(1) brightness(1.6)}.rtabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
 [role=tabpanel][hidden]{display:none}
 .tile.mt img.m{aspect-ratio:41/61;object-fit:fill;filter:drop-shadow(0 2px 3px #0003)}
 .dh button{border-color:#8fa2aa}.tile.cs .tx{padding:.6rem .8rem .8rem}
@@ -91,7 +109,7 @@ dialog.wide{width:min(96vw,1100px)}
   <button id="bUndo" data-th="ย้อนกลับ">Undo</button><button id="bLang" aria-label="Language">🌐 ไทย</button><button id="bRules" data-th="กฎ">Rules</button><button id="bSetup" data-th="ตั้งค่าเกม">Setup</button><button id="bNew" data-th="เกมใหม่">New game</button>
  </div>
 </header>
-<nav class="refbar" aria-label="Reference"><button id="bChar" data-th="ตัวละคร">Characters</button><button id="bMat" data-th="มัตสึริ">Matsuri</button><button id="bAmu" data-th="เครื่องราง">Amulets</button><button id="bCal" data-th="อักษรศิลป์">Calligraphy</button><button id="bLeg" data-th="ของวิเศษ">Legendary</button><button id="bAid" data-th="ตารางอ้างอิงผู้เล่น">Player aid</button></nav>
+<nav class="refbar" aria-label="Reference"><button id="bChar"><img class="ri" src="img/char.webp" alt=""><span data-th="ตัวละคร">Characters</span></button><button id="bMat"><img class="ri" src="img/ic-mat.webp" alt=""><span data-th="มัตสึริ">Matsuri</span></button><button id="bAmu"><img class="ri" src="img/ic-amu.webp" alt=""><span data-th="เครื่องราง">Amulets</span></button><button id="bCal"><img class="ri" src="img/ic-cal.webp" alt=""><span data-th="อักษรศิลป์">Calligraphy</span></button><button id="bLeg"><img class="ri" src="img/ic-leg.webp" alt=""><span data-th="ของวิเศษ">Legendary</span></button><button id="bAid"><span class="ri q">?</span><span data-th="ตารางอ้างอิงผู้เล่น">Player aid</span></button></nav>
 <main>
  <div class="piles">
   <div class="slot"><div class="pile" id="deck"></div><div class="cap" id="deckCap"></div></div>
@@ -103,12 +121,13 @@ dialog.wide{width:min(96vw,1100px)}
   <p class="hint" data-th="ขยับนักเดินทางของออโตมาที่จั่วไปตามระยะบนการ์ด (ว่าง 1–3 ช่อง) เลือกช่องที่มีอันดับสูงสุด ดูรายละเอียดในกฎ">Move the drawing Automa’s Traveler up to the range shown (1–3 empty spaces). Pick the highest-ranked space; see Rules.</p>
  </div>
 </main>
+<section id="play" class="play"><h2 id="pHead"></h2><div class="tabs" id="pTabs" role="group"></div><div id="pAreas"></div></section>
 
 <dialog id="dRules"><div class="dh"><h2 data-th="ข้อมูลอ้างอิงกฎ">Rules reference</h2><button id="xRules" data-th="ปิด">Close</button></div><div class="db" data-th="&lt;h3&gt;ผังพื้นที่เล่น&lt;/h3&gt;&lt;img class=&quot;ref&quot; src=&quot;img/ref.webp&quot; alt=&quot;ผังพื้นที่เล่นของออโตมา&quot;&gt;
 &lt;p&gt;ไอเท็มวางเป็นคอลัมน์คว่ำหน้า ส่วนการ์ดอาหารและรางวัลความสำเร็จวางหงายหน้า&lt;/p&gt;
 &lt;h3&gt;ทั่วไป&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;คุณเล่นกับออโตมา 2 ตัว โดยตั้งเกมแบบ 3 ผู้เล่น กติกาอื่นยังใช้ตามปกติ&lt;/li&gt;&lt;li&gt;ออโตมาไม่เคยจ่ายเหรียญ และนับเป็นผู้เล่นคนหนึ่ง&lt;/li&gt;&lt;/ul&gt;
-&lt;h3&gt;คอลเลกชันและอันดับ&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;ไอเท็มประเภทที่เธอมีแล้ววางบนสุดของคอลัมน์นั้น ประเภทใหม่เริ่มคอลัมน์ใหม่ทางขวา&lt;/li&gt;&lt;li&gt;เธอยังได้การ์ดทิวทัศน์ต่อไปแม้เกินขีดจำกัด 3/4/5 ใบ ไม่ต้องสนใจตัวเลขบนการ์ด&lt;/li&gt;&lt;li&gt;อันดับของช่อง = จำนวนไอเท็มประเภทนั้นที่เธอมี (เป็น 0 ได้)&lt;/li&gt;&lt;li&gt;วัดและโรงเตี๊ยมมีอันดับต่ำกว่าช่องอื่นทั้งหมด เว้นแต่การ์ดมีไอคอนนั้น (ชามราเม็ง = โรงเตี๊ยม, ประตูโทริอิ = วัด) ซึ่งช่องนั้นจะมีอันดับสูงสุด&lt;/li&gt;&lt;/ul&gt;
-&lt;h3&gt;ตาของออโตมา&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;จั่วการ์ดแล้ววางหงายหน้าบนกองทิ้ง&lt;/li&gt;&lt;li&gt;ระยะ: ตัวเลขบนการ์ด (1–3) คือจำนวนช่องว่างสูงสุดที่เธอยอมเดิน ช่องที่มีคนอยู่ไม่นับ&lt;/li&gt;&lt;li&gt;ย้ายไปยังช่องในระยะที่มีอันดับสูงสุด ถ้าเสมอให้เลือกช่องที่ใกล้ที่สุด&lt;/li&gt;&lt;li&gt;ทำตามช่องนั้น:&lt;ul&gt;&lt;li&gt;วัด: วางเหรียญ 2 เหรียญจากกองกลางและได้ 2 แต้ม&lt;/li&gt;&lt;li&gt;โรงเตี๊ยม: ยังไม่ซื้ออาหารจนกว่านักเดินทางทั้ง 3 คนจะมาถึง&lt;/li&gt;&lt;li&gt;ช่องอื่น: ได้ไอเท็มประเภทนั้น 1 ชิ้น (ฟาร์มได้ 1 เหรียญ ไม่ใช่ 3) และได้ 1 แต้มต่อไอเท็มประเภทนั้นที่เธอมีตอนนี้ ไม่ได้ผลปกติของช่อง&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;h3&gt;คอลเลกชันและอันดับ&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;ไอเท็มประเภทที่เธอมีแล้ววางบนสุดของคอลัมน์นั้น ประเภทใหม่เริ่มคอลัมน์ใหม่ทางขวา&lt;/li&gt;&lt;li&gt;เธอยังได้การ์ดทิวทัศน์ต่อไปแม้เกินขีดจำกัด 3/4/5 ใบ ไม่ต้องสนใจตัวเลขบนการ์ด&lt;/li&gt;&lt;li&gt;อันดับของช่อง = จำนวนไอเท็มประเภทนั้นที่เธอมี (เป็น 0 ได้)&lt;/li&gt;&lt;li&gt;วัดและโรงเตี๊ยมมีอันดับต่ำกว่าช่องอื่นทั้งหมด เว้นแต่การ์ดมีไอคอนนั้น (ชามราเม็ง = โรงเตี๊ยม, ประตูโทริอิ = วัด) ซึ่งช่องนั้นจะมีอันดับสูงสุด&lt;/li&gt;&lt;/ul&gt;&lt;h4 class=&quot;ex&quot;&gt;ตัวอย่าง: อันดับ&lt;/h4&gt;&lt;p&gt;คอลเลกชันของออโตมาและอันดับของแต่ละช่อง ประเภทไอเท็มที่ไม่ได้แสดงมีอันดับ 0&lt;/p&gt;&lt;img class=&quot;ref ex&quot; src=&quot;img/ex-ranks.webp&quot; alt=&quot;คอลเลกชันของออโตมาพร้อมอันดับของช่อง&quot;&gt;&lt;h4 class=&quot;ex&quot;&gt;ตัวอย่าง: การวางไอเท็มที่ได้รับ&lt;/h4&gt;&lt;p&gt;แผนภาพด้านล่างแสดงว่าต้องวางไอเท็มที่ได้รับตรงไหนตามประเภท และจะได้กี่แต้ม คอลัมน์ขวาสุดคือที่วางการ์ดประเภทที่ยังไม่มีในคอลเลกชัน ซึ่งเริ่มคอลัมน์ใหม่สำหรับการ์ดประเภทนั้น (และเฉพาะประเภทนั้น):&lt;/p&gt;&lt;img class=&quot;ref ex&quot; src=&quot;img/ex-place.webp&quot; alt=&quot;ตำแหน่งวางไอเท็มและแต้มที่ได้&quot;&gt;
+&lt;h3&gt;ตาของออโตมา&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;จั่วการ์ดแล้ววางหงายหน้าบนกองทิ้ง&lt;/li&gt;&lt;li&gt;ระยะ: ตัวเลขบนการ์ด (1–3) คือจำนวนช่องว่างสูงสุดที่เธอยอมเดิน ช่องที่มีคนอยู่ไม่นับ&lt;/li&gt;&lt;li&gt;ย้ายไปยังช่องในระยะที่มีอันดับสูงสุด ถ้าเสมอให้เลือกช่องที่ใกล้ที่สุด&lt;/li&gt;&lt;li&gt;ทำตามช่องนั้น:&lt;ul&gt;&lt;li&gt;วัด: วางเหรียญ 2 เหรียญจากกองกลางและได้ 2 แต้ม&lt;/li&gt;&lt;li&gt;โรงเตี๊ยม: ยังไม่ซื้ออาหารจนกว่านักเดินทางทั้ง 3 คนจะมาถึง&lt;/li&gt;&lt;li&gt;ช่องอื่น: ได้ไอเท็มประเภทนั้น 1 ชิ้น (ฟาร์มได้ 1 เหรียญ ไม่ใช่ 3) และได้ 1 แต้มต่อไอเท็มประเภทนั้นที่เธอมีตอนนี้ ไม่ได้ผลปกติของช่อง&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;&lt;h4 class=&quot;ex&quot;&gt;ตัวอย่าง: การเคลื่อนที่ของออโตมา&lt;/h4&gt;&lt;p&gt;ออโตมาตัวนี้เล่นเป็นนักเดินทางสีเขียวและมีคอลเลกชันดังนี้:&lt;/p&gt;&lt;img class=&quot;ref ex&quot; src=&quot;img/ex-collection.webp&quot; alt=&quot;คอลเลกชันของออโตมาสีเขียว&quot;&gt;&lt;p&gt;ต่อไปนี้เป็นตัวอย่างการเคลื่อนที่ของออโตมาใน 6 สถานการณ์:&lt;/p&gt;&lt;img class=&quot;ref ex&quot; src=&quot;img/ex-move123.webp&quot; alt=&quot;ตัวอย่างที่ 1, 2 และ 3 บนกระดาน&quot;&gt;&lt;p&gt;&lt;b&gt;1&lt;/b&gt; ระยะคือ 3 ดังนั้นให้ตรวจ 3 ช่องว่างถัดไป ได้แก่ นาข้าว การพบปะ และทะเล เนื่องจากไม่มีช่องวัดว่างในระยะ ไอคอนวัดจึงไม่มีผล&lt;/p&gt;&lt;p&gt;ช่องที่อันดับสูงสุดใน 3 ช่องคือช่องทิวทัศน์ทะเล (อันดับ 4) ดังนั้นย้ายนักเดินทางของออโตมาไปที่นั่นและให้การ์ดทิวทัศน์ทะเล 1 ใบ เธอเป็นคนแรกที่มีการ์ดทิวทัศน์ทะเลครบ 5 ใบ จึงได้รางวัลทิวทัศน์ทะเล สุดท้ายเธอได้ 8 แต้ม: 5 แต้มเพราะเป็นการ์ดใบที่ 5 ของประเภทนั้น และ 3 แต้มจากรางวัล&lt;/p&gt;&lt;p&gt;&lt;b&gt;2&lt;/b&gt; บนการ์ดใบนี้ ระยะ 2 สั้นเกินกว่าจะถึงทิวทัศน์ทะเล 2 ช่องในระยะมีอันดับ 1 ทั้งคู่ จึงย้ายนักเดินทางไปช่องที่ใกล้กว่า คือนาข้าว ให้การ์ดทิวทัศน์นาข้าว 1 ใบ เธอได้ 2 แต้มเพราะตอนนี้มีการ์ดทิวทัศน์นาข้าว 2 ใบ&lt;/p&gt;&lt;p&gt;&lt;b&gt;3&lt;/b&gt; ระยะ 1 หมายถึงมีเพียงช่องว่างถัดไปที่อยู่ในระยะ คือนาข้าว จึงย้ายนักเดินทางไปที่นั่นและให้การ์ดทิวทัศน์นาข้าว 1 ใบ เธอได้ 2 แต้มเพราะตอนนี้มีการ์ดทิวทัศน์นาข้าว 2 ใบ&lt;/p&gt;&lt;img class=&quot;ref ex&quot; src=&quot;img/ex-moveabc.webp&quot; alt=&quot;ตัวอย่าง A, B และ C บนกระดาน&quot;&gt;&lt;p&gt;&lt;b&gt;A&lt;/b&gt; ไอคอนวัดหมายความว่าช่องวัดมีอันดับสูงสุดในตานี้ เนื่องจากมีช่องวัดว่างอยู่ในระยะ จึงย้ายนักเดินทางของเธอไปที่นั่นและวางเหรียญ 2 เหรียญจากกองกลางในพื้นที่วัดของเธอ เธอได้ 2 แต้ม&lt;/p&gt;&lt;p&gt;&lt;b&gt;B&lt;/b&gt; การ์ดใบนี้ไม่มีไอคอนวัด วัดจึงมีอันดับต่ำกว่าช่องอื่นทั้งหมด ดังนั้นเลือกช่องอื่นเพียงช่องเดียวในระยะ คือฟาร์ม ย้ายนักเดินทางของเธอไปที่นั่นและให้เหรียญ 1 เหรียญ เธอได้ 4 แต้มเพราะตอนนี้มีเหรียญ 4 เหรียญ&lt;/p&gt;&lt;p&gt;&lt;b&gt;C&lt;/b&gt; มีเพียง 1 ช่องในระยะ คือวัด จึงย้ายนักเดินทางของเธอไปที่นั่น วางเหรียญ 2 เหรียญจากกองกลางในพื้นที่วัดของเธอ เธอได้ 2 แต้ม&lt;/p&gt;
 &lt;h3&gt;ตาของคุณ&lt;/h3&gt;&lt;p&gt;เล่นตามปกติ แต่การ์ดอาหารจะยังไม่เปิดจนกว่าทุกคนจะถึงโรงเตี๊ยม&lt;/p&gt;
 &lt;h3&gt;โรงเตี๊ยม&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;ที่โรงเตี๊ยมระหว่างทาง สับการ์ดออโตมาทั้งหมดเป็นสำรับใหม่ (ใช้ปุ่มสับสำรับ)&lt;/li&gt;&lt;li&gt;จั่วการ์ดอาหาร 4 ใบ และเรียงตามลำดับที่จั่ว&lt;/li&gt;&lt;li&gt;ซื้อตามลำดับที่มาถึง ออโตมาแต่ละตัวเลือกใบที่ถูกที่สุด (ใบที่จั่วก่อนถ้าราคาเท่ากัน) ไม่ต้องจ่ายเงิน และได้ 6 แต้ม อาหารชนิดซ้ำได้&lt;/li&gt;&lt;/ol&gt;
 &lt;h3&gt;จบการเดินทาง&lt;/h3&gt;&lt;p&gt;ทำตามปกติ สำหรับรางวัลนักสะสม ของที่ระลึกแต่ละชิ้นของออโตมานับเป็น 2&lt;/p&gt;
@@ -126,7 +145,7 @@ dialog.wide{width:min(96vw,1100px)}
 <li>An item of a type she has goes on top of that column. A new type starts a new column to the right.</li>
 <li>Panoramas keep coming past the 3/4/5 limit. Ignore the printed numbers.</li>
 <li>Rank of a space = number of items she has of that type (can be 0).</li>
-<li>Temple and Inn rank below all other spaces, unless the card shows that icon (ramen bowl = Inn, torii = Temple). Then that space ranks highest.</li></ul>
+<li>Temple and Inn rank below all other spaces, unless the card shows that icon (ramen bowl = Inn, torii = Temple). Then that space ranks highest.</li></ul><h4 class="ex">Example: ranks</h4><p>An Automa’s collection along with the ranks of the spaces. All item types not shown have rank 0.</p><img class="ref ex" src="img/ex-ranks.webp" alt="Automa collection with space ranks: Farm 2, Encounter 3, Sea 3, Paddy 4, Shop 1"><h4 class="ex">Example: placing an item</h4><p>The diagram below shows where to place a received item based on its type, and how many points it would score. The rightmost column is where a card of a type not already in the collection would be placed, thus starting a new column for that card type (and only that type):</p><img class="ref ex" src="img/ex-place.webp" alt="Where each received item is placed and the points it scores">
 <h3>Automa turn</h3><ol>
 <li>Draw a card and place it face up on the discard pile.</li>
 <li>Range: the number on the card (1–3) is the most unoccupied spaces she will move. Occupied spaces are ignored.</li>
@@ -134,7 +153,7 @@ dialog.wide{width:min(96vw,1100px)}
 <li>Resolve it:
 <ul><li>Temple: she places 2 coins from the reserve and scores 2 points.</li>
 <li>Inn: no Meal until all 3 Travelers have arrived.</li>
-<li>Anything else: she gets 1 item of that type (a Farm gives 1 coin, not 3) and scores 1 point per item of that type she now has. No normal benefit.</li></ul></li></ol>
+<li>Anything else: she gets 1 item of that type (a Farm gives 1 coin, not 3) and scores 1 point per item of that type she now has. No normal benefit.</li></ul></li></ol><h4 class="ex">Example: Automa moves</h4><p>This Automa plays as the green Traveler and has this collection:</p><img class="ref ex" src="img/ex-collection.webp" alt="Green Automa collection: Farm 3, Encounter 1, Sea 4, Paddy 1, Souvenir 2"><p>Below are examples of how the Automa would move in 6 different situations:</p><img class="ref ex" src="img/ex-move123.webp" alt="Examples 1, 2 and 3 on the board"><p><b>1</b> The range is 3. Therefore, you check the next 3 unoccupied spaces, which are Paddy, Encounter, and Sea. Since there’s no unoccupied Temple space within range, the Temple icon makes no difference.</p><p>The highest ranked of the 3 spaces is the Sea Panorama space (rank 4). So, you move the Automa’s Traveler there and give her a Sea Panorama card. She’s the first to have 5 Sea Panorama cards, so you give her the Sea Panorama Achievement. Finally, she scores 8 points: 5 points because it’s her 5th card of that type and 3 points for the achievement.</p><p><b>2</b> On this card, the range 2 is too short to reach the Sea Panorama. The 2 spaces within range both have rank 1, so you move her Traveler to the closest of those, the Paddy. You give her a Paddy Panorama card and she scores 2 points because she now has 2 Paddy Panorama cards.</p><p><b>3</b> The range 1 means that only the next empty space is within range, the Paddy space. So, you move her Traveler there and give her a Paddy Panorama card. She scores 2 points because she now has 2 Paddy Panorama cards.</p><img class="ref ex" src="img/ex-moveabc.webp" alt="Examples A, B and C on the board"><p><b>A</b> The Temple-up icon means that Temple spaces have the highest rank this turn. Since there’s an unoccupied Temple space within range, you move her Traveler there and place 2 coins from the reserve in her Temple area for which she scores 2 points.</p><p><b>B</b> There’s no Temple icon on this card, so the Temple has a lower rank than all other spaces. Therefore, the only other space within range, the Farm, is chosen. You move her Traveler there and give her 1 coin. She scores 4 points because she now has 4 coins.</p><p><b>C</b> Only 1 space, the Temple, is within range, so you move her Traveler there. You place 2 coins from the reserve in her Temple area. She scores 2 points.</p>
 <h3>Your turns</h3><p>Play normally, but Meal cards stay hidden until everyone is at an Inn.</p>
 <h3>Inns</h3><ol>
 <li>At intermediate Inns, shuffle all Automa cards into a new deck (use the reshuffle button).</li>
@@ -150,7 +169,7 @@ dialog.wide{width:min(96vw,1100px)}
 <h3>Promos</h3><p>Antoine, Eriku, Naïade and New Encounters work unchanged. Felicia can’t be used.</p>
 </div></dialog>
 
-<dialog id="dRef" class="wide"><div class="dtop"><div class="dh"><h2 data-th="ข้อมูลอ้างอิง">Reference</h2><button id="xRef" data-th="ปิด">Close</button></div><div class="rtabs" role="tablist" aria-label="Reference sections"><button role="tab" id="rt-char" data-t="char" data-th="ตัวละคร">Characters</button><button role="tab" id="rt-mat" data-t="mat" data-th="มัตสึริ">Matsuri</button><button role="tab" id="rt-amu" data-t="amu" data-th="เครื่องราง">Amulets</button><button role="tab" id="rt-cal" data-t="cal" data-th="อักษรศิลป์">Calligraphy</button><button role="tab" id="rt-leg" data-t="leg" data-th="ของวิเศษ">Legendary</button><button role="tab" id="rt-aid" data-t="aid" data-th="ตารางอ้างอิงผู้เล่น">Player aid</button></div></div>
+<dialog id="dRef" class="wide"><div class="dtop"><div class="dh"><h2 data-th="ข้อมูลอ้างอิง">Reference</h2><button id="xRef" data-th="ปิด">Close</button></div><div class="rtabs" role="tablist" aria-label="Reference sections"><button role="tab" id="rt-char" data-t="char"><img class="ri" src="img/char.webp" alt=""><span data-th="ตัวละคร">Characters</span></button><button role="tab" id="rt-mat" data-t="mat"><img class="ri" src="img/ic-mat.webp" alt=""><span data-th="มัตสึริ">Matsuri</span></button><button role="tab" id="rt-amu" data-t="amu"><img class="ri" src="img/ic-amu.webp" alt=""><span data-th="เครื่องราง">Amulets</span></button><button role="tab" id="rt-cal" data-t="cal"><img class="ri" src="img/ic-cal.webp" alt=""><span data-th="อักษรศิลป์">Calligraphy</span></button><button role="tab" id="rt-leg" data-t="leg"><img class="ri" src="img/ic-leg.webp" alt=""><span data-th="ของวิเศษ">Legendary</span></button><button role="tab" id="rt-aid" data-t="aid"><span class="ri q">?</span><span data-th="ตารางอ้างอิงผู้เล่น">Player aid</span></button></div></div>
 <div class="db" id="rp-char" role="tabpanel"><div class="fl"><input id="cq" type="search" placeholder="Filter by name or ability" aria-label="Filter characters"><select id="cs" aria-label="Filter by set"><option value="" data-th="ทุกชุด">All sets</option><option>Base</option><option>Crossroads</option><option>Matsuri</option></select></div><div id="cList" class="grid"></div></div>
 <div class="db" id="rp-mat" role="tabpanel"><div class="tabs" role="group" aria-label="Matsuri mode"><button data-th="การเล่นปกติ" id="tN" aria-pressed="true">Normal play</button><button data-th="เมื่อมีออโตมา" id="tA" aria-pressed="false">With Automas</button></div><p id="mNote"></p><input id="mq" type="search" placeholder="Filter by name or effect" aria-label="Filter Matsuri cards"><div id="mList" class="grid mg"></div></div>
 <div class="db" id="rp-skill" role="tabpanel"><div id="rList" class="grid sk"></div></div>
@@ -162,19 +181,42 @@ dialog.wide{width:min(96vw,1100px)}
 <script>
 const $=id=>document.getElementById(id),CK='tokaido_automa',N=16;
 const COL=['#3a9d99','#c4432b'],NAME=['Automa A','Automa B'];
+const PT=[['shop','Shop','ร้านค้า','#34404c'],['farm','Farm','ฟาร์ม','#a9743c'],['paddy','Paddy','นาข้าว','#7fb82a'],['sea','Sea','ทะเล','#3f94cf'],['mountain','Mountain','ภูเขา','#7f8ca0'],['enc','Encounter','การพบปะ','#d27fb0'],['hot','Hot Spring','บ่อน้ำพุร้อน','#3fa8a0']],PK=PT.map(t=>t[0]),emptyPA=()=>PK.map(()=>0);
 const SPACE=['Encounter','Rice Paddy','Shop','Farm','Sea','Hot Spring','Mountain'];
 const NEED_YOU={1:5,2:3,3:1,4:0},NEED_A={4:0,5:1,6:3,7:5};
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
-const fresh=()=>({v:1,done:false,step:0,turn:0,lv:[4,4,4],lvDeck:[0,1,2].map(()=>shuf([0,1,2,3,4,5,6])),lvDrawn:[[],[],[]],deck:shuf([...Array(N).keys()]),disc:[],prev:null});
+const fresh=()=>({v:1,done:false,step:0,turn:0,lv:[4,4,4],lvDeck:[0,1,2].map(()=>shuf([0,1,2,3,4,5,6])),lvDrawn:[[],[],[]],deck:shuf([...Array(N).keys()]),disc:[],prev:null,pa:[emptyPA(),emptyPA()],show:'a'});
 let LG=(document.cookie.match(/(?:^|; )tl=(en|th)/)||[])[1];try{LG=LG||localStorage.getItem('tl')}catch(e){}LG=LG||((navigator.language||'').startsWith('th')?'th':'en');
 const L=(e,t)=>LG==='th'?t:e,nm=i=>L(['Automa A','Automa B'][i],['ออโตมา A','ออโตมา B'][i]),whoN=i=>i?nm(i-1):L('You','คุณ');
 const spN=k=>L(SPACE[k],['การพบปะ','นาข้าว','ร้านค้า','ฟาร์ม','ทะเล','บ่อน้ำพุร้อน','ภูเขา'][k]);
 let S;
 function save(){const s=encodeURIComponent(JSON.stringify(S));document.cookie=CK+'='+s+';max-age=31536000;path=/;SameSite=Lax';try{localStorage.setItem(CK,s)}catch(e){}}
 function load(){let m=document.cookie.split('; ').find(x=>x.startsWith(CK+'='));let s=m?m.slice(CK.length+1):null;if(!s)try{s=localStorage.getItem(CK)}catch(e){}
- try{const o=JSON.parse(decodeURIComponent(s));if(o&&o.v===1)return o}catch(e){}return fresh()}
+ try{const o=JSON.parse(decodeURIComponent(s));if(o&&o.v===1){o.pa=Array.isArray(o.pa)&&o.pa.length===2?o.pa:[emptyPA(),emptyPA()];o.pa=o.pa.map(a=>{if(a&&a.length===8)a=a.filter((x,j)=>j!==6);return PK.map((k,j)=>(a&&a[j])|0)});o.show=['a','b','ab'].includes(o.show)?o.show:'a';return o}}catch(e){}return fresh()}
 // index 0=You,1=Automa A,2=Automa B
 
+function playArea(i){
+ const pa=S.pa[i],tn=j=>L(PT[j][1],PT[j][2]);
+ const items=PT.map((t,j)=>[j,pa[j]]).filter(([j,n])=>n>0);
+ const vals=[...new Set(items.map(x=>x[1]))].sort((a,b)=>b-a);
+ const grp=v=>v==null?[]:items.filter(x=>x[1]===v).map(x=>x[0]);
+ const g1=grp(vals[0]),g2=grp(vals[1]),sm=(g,v,c,lb)=>`<span class="${c}">${lb}: ${g.length?g.map(j=>`<img class="si sm" src="img/s-${PK[j]}.webp" alt="">${tn(j)}`).join(', ')+' ('+v+')':'—'}</span>`;
+ const ord=PT.map((t,j)=>j).sort((a,b)=>((pa[a]>0?0:1)-(pa[b]>0?0:1))||((PT[a][0]==='farm'?0:1)-(PT[b][0]==='farm'?0:1))||a-b);
+ const cols=ord.map(j=>{const t=PT[j],n=pa[j],coin=t[0]==='farm',off=n>8?8:12,ch=coin?34:54,ic=`<img class="pi" src="img/s-${t[0]}.webp" alt="">`;
+  let cards='';for(let c=0;c<n;c++)cards+=coin?`<span class="pcoin" style="top:${c*off}px"></span>`:`<span class="pcard" style="top:${c*off}px;background:${t[3]}">${c===n-1?ic:''}</span>`;
+  const h=n?ch+(n-1)*off:0,hi=n>0?(n===vals[0]?' hi1':n===vals[1]?' hi2':''):'';
+  return `<div class="pcol${hi}"><button class="padd" data-add="${i},${j}" style="background:${t[3]};border-color:${t[3]}"><img class="si" src="img/s-${t[0]}.webp" alt="">${tn(j)}</button><div class="pstack${n?'':' empty'}" style="${n?`height:${h}px`:''}">${cards}</div><div class="prk">${L('Rank ','อันดับ ')+n}</div><button class="pm" data-sub="${i},${j}" aria-label="${L('Remove one','เอาออก 1')}" ${n?'':'disabled'}>−</button></div>`}).join('');
+ return `<div class="pa"><h3><span class="dot" style="background:${COL[i]}"></span>${nm(i)}</h3><div class="psum">${sm(g1,vals[0],'s1',L('Highest','อันดับสูงสุด'))}${sm(g2,vals[1],'s2',L('2nd','อันดับสอง'))}</div><div class="prow">${cols}</div></div>`}
+function playRender(){
+ const sh=S.show||'a';
+ $('pHead').textContent=L('Play areas','พื้นที่เล่น');
+ $('pTabs').innerHTML=[['a','Show A','แสดง A'],['b','Show B','แสดง B'],['ab','Show both','แสดงทั้งคู่']].map(([k,e,t])=>`<button data-sh="${k}" aria-pressed="${sh===k}">${L(e,t)}</button>`).join('');
+ $('play').classList.toggle('both',sh==='ab');$('pAreas').innerHTML=(sh==='b'?[1]:sh==='ab'?[0,1]:[0]).map(playArea).join('')}
+$('play').onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;
+ if(b.dataset.sh)S.show=b.dataset.sh;
+ else if(b.dataset.add||b.dataset.sub){const a=(b.dataset.add||b.dataset.sub).split(',').map(Number),d=1;S.pa[a[0]][a[1]]=Math.max(0,S.pa[a[0]][a[1]]+(b.dataset.add?d:-d))}
+ else return;
+ save();playRender()};
 function render(){
  $('deck').innerHTML=S.deck.length?`<div class="stack"></div><img class="c" src="img/aback.webp" alt="Automa deck">`:'';
  $('deckCap').textContent=S.deck.length?L(`Deck: ${S.deck.length} card${S.deck.length>1?'s':''}`,`สำรับ: ${S.deck.length} ใบ`):L('Deck empty','สำรับหมดแล้ว');
@@ -182,13 +224,13 @@ function render(){
  $('pile').innerHTML=top?`<img class="c" src="img/a${String(top.c).padStart(2,'0')}.webp" alt="Last drawn Automa card">`:'';
  $('pileCap').textContent=top?L(`Drawn: ${S.disc.length} · ${nm(top.w)}`,`จั่วแล้ว: ${S.disc.length} · ${nm(top.w)}`):L('No cards drawn yet','ยังไม่ได้จั่วการ์ด');
  $('hist').innerHTML=S.disc.slice(-5,-1).reverse().map(d=>`<span><img src="img/a${String(d.c).padStart(2,'0')}.webp" alt=""><i style="background:${COL[d.w]}"></i></span>`).join('');
- $('drawRow').innerHTML=[0,1].map(i=>`<button class="go" data-d="${i}" style="background:${COL[i]};border-color:${COL[i]}" ${S.deck.length&&!busy?'':'disabled'}>${L('Draw for ','จั่วให้ ')}${nm(i)}</button>`).join('');$('bUndo').disabled=busy||!(S.disc.length||S.prev);
+ $('drawRow').innerHTML=[0,1].map(i=>`<button class="go" data-d="${i}" style="background:${COL[i]};border-color:${COL[i]}" ${S.deck.length&&!busy?'':'disabled'}>${L('Draw for ','จั่วให้ ')}${nm(i)}</button>`).join('');$('bUndo').disabled=busy||!(S.disc.length||S.prev);playRender();
 }
 let busy=false;
 function draw(i){
  if(!S.deck.length||busy)return;
  const c=S.deck[0],w=i,dr=$('deck').getBoundingClientRect(),pr=$('pile').getBoundingClientRect();
- const finish=()=>{S.deck.shift();S.disc.push({c,w});S.prev=null;save();busy=false;fly&&fly.remove();render()};
+ const finish=()=>{S.deck.shift();S.disc.push({c,w});S.prev=null;if(S.show!=='ab')S.show=w?'b':'a';save();busy=false;fly&&fly.remove();render()};
  let fly;busy=true;document.querySelectorAll('#drawRow button').forEach(b=>b.disabled=true);
  if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return}
  fly=document.createElement('div');fly.className='fly';
@@ -212,7 +254,28 @@ function undo(){
  const dx=dr.left-pr.left,dy=dr.top-pr.top,P='perspective(1200px) ';
  fly.animate([{transform:P+'translate(0,0) rotateY(180deg) scale(1)'},{transform:P+`translate(${dx*.5}px,${dy*.5-30}px) rotateY(90deg) scale(1.08)`,offset:.5},{transform:P+`translate(${dx}px,${dy}px) rotateY(0deg) scale(1)`}],{duration:700,easing:'ease-in-out',fill:'forwards'}).onfinish=finish;
 }
-function reshuffle(){if(S.disc.length&&!confirm(L('Shuffle all 16 Automa cards into a new deck? You can undo this.','สับการ์ดออโตมาทั้ง 16 ใบเป็นสำรับใหม่? ย้อนกลับได้')))return;S.prev={deck:S.deck,disc:S.disc};S.deck=shuf([...Array(N).keys()]);S.disc=[];save();render()}
+function reshuffle(){
+ if(busy)return;
+ if(S.disc.length&&!confirm(L('Shuffle all 16 Automa cards into a new deck? You can undo this.','สับการ์ดออโตมาทั้ง 16 ใบเป็นสำรับใหม่? ย้อนกลับได้')))return;
+ const ns=shuf([...Array(N).keys()]);
+ const apply=()=>{S.prev={deck:S.deck,disc:S.disc};S.deck=ns;S.disc=[];save();busy=false;$('bInn').disabled=false;$('pile').style.visibility=$('hist').style.visibility='';render()};
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){apply();return}
+ busy=true;document.querySelectorAll('#drawRow button,#bInn,#bUndo').forEach(b=>b.disabled=true);
+ const dr=$('deck').getBoundingClientRect(),pr=$('pile').getBoundingClientRect(),P='perspective(1200px) ',flies=[];
+ const mk=(r,face)=>{const f=document.createElement('div');f.className='fly';Object.assign(f.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});f.innerHTML='<img src="img/aback.webp" alt="">'+(face!=null?`<img class="fr" src="img/a${String(face).padStart(2,'0')}.webp" alt="">`:'');document.body.appendChild(f);flies.push(f);return f};
+ const done=a=>a.finished.catch(()=>{});
+ // 1) drawn cards fly back onto the deck, turning face-down
+ const k=Math.min(S.disc.length,6),dx=dr.left-pr.left,dy=dr.top-pr.top,back=[];
+ if(k){$('pile').style.visibility=$('hist').style.visibility='hidden';
+  for(let n=0;n<k;n++){const f=mk(pr,S.disc[S.disc.length-1-n].c);
+   back.push(done(f.animate([{transform:P+'translate(0,0) rotateY(180deg) scale(1)'},{transform:P+`translate(${dx*.5}px,${dy*.5-30}px) rotateY(90deg) scale(1.06)`,offset:.5},{transform:P+`translate(${dx}px,${dy}px) rotateY(0deg) scale(1)`}],{duration:600,delay:n*90,easing:'ease-in-out',fill:'both'})))}}
+ Promise.all(back).then(()=>{
+  flies.splice(0).forEach(f=>f.remove());
+  // 2) riffle shuffle: the stack splits in two and the halves interleave
+  const sh=[];
+  for(let n=0;n<10;n++){const f=mk(dr),sd=n%2?1:-1,w=dr.width;
+   sh.push(done(f.animate([{transform:'translateX(0) rotate(0deg)'},{transform:`translateX(${sd*w*.6}px) translateY(-8px) rotate(${sd*-6}deg)`,offset:.35},{transform:`translateX(${sd*w*.6}px) translateY(-8px) rotate(${sd*-6}deg)`,offset:.5},{transform:'translateX(0) translateY(0) rotate(0deg)'}],{duration:700,delay:n*55,easing:'ease-in-out',fill:'both'})))}
+  return Promise.all(sh)}).then(()=>{flies.splice(0).forEach(f=>f.remove());apply()})}
 $('drawRow').onclick=e=>{const b=e.target.closest('button');if(b&&!b.disabled)draw(+b.dataset.d)};$('bUndo').onclick=undo;$('bInn').onclick=reshuffle;
 $('bRules').onclick=()=>$('dRules').showModal();$('xRules').onclick=()=>$('dRules').close();
 $('bSetup').onclick=openSetup;$('xSetup').onclick=()=>{$('dSetup').close()};
